@@ -120,6 +120,7 @@ HOME_BODY = """
         <svg class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
         <svg class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
       </label>
+      <label aria-hidden='true' class='nav-backdrop' for='nav-toggle'></label>
       <div class='nav-menu section'>
         <div class='widget PageList'><div class='widget-content'>
           <ul>
@@ -129,7 +130,9 @@ HOME_BODY = """
             <li><a href='empty.html'>حالة فارغة</a></li>
           </ul>
         </div></div>
-        <div class='widget LinkList'><div class='widget-content'>
+        <div class='widget LinkList'>
+          <h2 class='widget-title'><span>أقسام المدونة</span></h2>
+          <div class='widget-content'>
           <ul>
             <li><a href='#'>الفضاء</a></li>
             <li><a href='#'>الإنسان</a></li>
@@ -138,6 +141,9 @@ HOME_BODY = """
           </ul>
         </div></div>
       </div>
+      <label aria-hidden='true' class='nav-drawer-close' for='nav-toggle' title='إغلاق القائمة'>
+        <svg height='16' viewBox='0 0 24 24' width='16'><path d='M6 6l12 12M18 6L6 18'/></svg>
+      </label>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
@@ -351,6 +357,7 @@ POST_BODY = """
         <svg class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
         <svg class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
       </label>
+      <label aria-hidden='true' class='nav-backdrop' for='nav-toggle'></label>
       <div class='nav-menu section'>
         <div class='widget PageList'><div class='widget-content'>
           <ul>
@@ -359,7 +366,9 @@ POST_BODY = """
             <li><a href='empty.html'>حالة فارغة</a></li>
           </ul>
         </div></div>
-        <div class='widget LinkList'><div class='widget-content'>
+        <div class='widget LinkList'>
+          <h2 class='widget-title'><span>أقسام المدونة</span></h2>
+          <div class='widget-content'>
           <ul>
             <li><a href='#'>الفضاء</a></li>
             <li><a href='#'>الإنسان</a></li>
@@ -368,6 +377,9 @@ POST_BODY = """
           </ul>
         </div></div>
       </div>
+      <label aria-hidden='true' class='nav-drawer-close' for='nav-toggle' title='إغلاق القائمة'>
+        <svg height='16' viewBox='0 0 24 24' width='16'><path d='M6 6l12 12M18 6L6 18'/></svg>
+      </label>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
@@ -560,6 +572,37 @@ EMPTY_STATE = """
 """
 
 
+def mobile_showcase():
+    """لوحة تُظهر القائمة الجانبية في الجوال: إطار مغلق وإطار مفتوح."""
+    return """<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+<head>
+<meta charset='UTF-8'/>
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<title>معاينة الجوال — دهشة موثّقة</title>
+<style>
+  body{background:#f2efe8;color:#1f1c19;font:16px/1.8 Tahoma,Arial,sans-serif;margin:0;padding:28px 18px 60px;text-align:center}
+  h1{font-size:22px;margin:0 0 8px}
+  p{color:#6f695e;margin:0 auto 26px;max-width:720px}
+  .frames{display:flex;flex-wrap:wrap;gap:28px;justify-content:center}
+  figure{margin:0}
+  figcaption{color:#6f695e;font-size:14px;margin-top:10px}
+  iframe{background:#fff;border:1px solid #e8e1d5;border-radius:14px;box-shadow:0 18px 40px -30px rgba(0,0,0,.5);display:block}
+</style>
+</head>
+<body>
+  <h1>معاينة الجوال</h1>
+  <p>إطاران بعرض هاتف حقيقي (390px) — القاعدة <code>@media (max-width:1000px)</code> فعّالة داخل الإطارين.
+     يمينًا: القائمة مغلقة، ويسارًا: الدُرج الجانبي مفتوح مع الستارة وزر الإغلاق.</p>
+  <div class='frames'>
+    <figure><iframe height='760' src='phone-closed.html' title='القائمة مغلقة' width='390'></iframe><figcaption>القائمة مغلقة (شريط + بحث)</figcaption></figure>
+    <figure><iframe height='760' src='phone-open.html' title='دُرج القائمة مفتوح' width='390'></iframe><figcaption>الدُرج الجانبي مفتوح + ستارة</figcaption></figure>
+  </div>
+</body>
+</html>
+"""
+
+
 def main():
     xml = read(XML)
     css = build_css(xml)
@@ -588,7 +631,16 @@ def main():
     empty_body = HOME_BODY.replace('{CARDS}', EMPTY_STATE).replace('{SIDEBAR}', SIDEBAR)
     empty = page('لا توجد مشاركات — دهشة موثّقة', empty_body + FOOTER).replace('__CSS__', css)
 
-    pages = [('index.html', home), ('post.html', post), ('empty.html', empty)]
+    # لوحة معاينة الجوال: نفس الصفحة داخل إطارين بعرض هاتف، أحدهما بدُرج مفتوح
+    opened = home.replace(
+        "class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'",
+        "checked='checked' class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'")
+    assert opened != home, 'تعذّر ضبط مفتاح القائمة مفتوحًا — تحقّق من ماركب المعاينة'
+
+    pages = [
+        ('index.html', home), ('post.html', post), ('empty.html', empty),
+        ('phone-closed.html', home), ('phone-open.html', opened), ('mobile.html', mobile_showcase()),
+    ]
     for name, html in pages:
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
             f.write(html)

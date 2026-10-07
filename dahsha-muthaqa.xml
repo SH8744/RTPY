@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='dahsha-muthaqa.xml' b:templateVersion='1.3.2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='dahsha-muthaqa.xml' b:templateVersion='1.3.3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -22,7 +22,7 @@
 
 =========================================================
   قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.3.2
+  الإصدار 1.3.3
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -164,7 +164,8 @@ pre code{background:0 0;padding:0;color:inherit}
   /* شريط التنقل شفاف ليظهر خلفه صورة الترويسة */
   background:transparent;
   border-bottom:1px solid transparent;
-  position:sticky;top:0;z-index:80;
+  /* السياق الطبقي للترويسة (.site-header z-index:60) هو ما يرفع الشريط فوق المحتوى */
+  position:sticky;top:0;
   transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease
 }
 /* عند تمرير الصفحة ووصول الشريط أعلى الشاشة يصبح معتمًا ليظهر فوق المحتوى بوضوح */
@@ -178,6 +179,9 @@ pre code{background:0 0;padding:0;color:inherit}
   min-height:64px;padding-block:8px;position:relative
 }
 .nav-toggle-checkbox{display:none}
+/* عناصر الدُرج الجانبي (تُستعمل في الجوال فقط) */
+.nav-backdrop{display:none}
+.nav-drawer-close{display:none}
 .nav-toggle{color:$(posts.title.color);cursor:pointer;display:none;padding:10px}
 .site-nav ul{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;list-style:none;margin:0;padding:0}
 .site-nav li a{
@@ -506,7 +510,8 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .footer-bottom .Attribution{margin-top:10px}
 .to-top{
   align-items:center;background:$(keycolor);border-radius:50%;bottom:26px;color:#fff;display:flex;
-  height:44px;inset-inline-end:24px;justify-content:center;position:fixed;width:44px;z-index:90;
+  /* z-index أقل من 60 (سياق الترويسة) حتى لا يظهر فوق ستارة دُرج الجوال */
+  height:44px;inset-inline-end:24px;justify-content:center;position:fixed;width:44px;z-index:55;
   box-shadow:0 10px 24px -12px rgba(0,0,0,.6);opacity:.9;transition:opacity .2s ease,transform .2s ease
 }
 .to-top:hover{color:#fff;opacity:1;transform:translateY(-3px)}
@@ -536,27 +541,59 @@ iframe.blogger-iframe-colorize{width:100%}
 @media (max-width:1000px){
   .layout-grid{gap:36px;grid-template-columns:minmax(0,1fr)}
   .sidebar{margin-top:8px}
-  .site-nav{position:relative}
   .nav-inner{justify-content:space-between;min-height:56px;padding-inline:10px}
   .nav-toggle{display:flex}
-  .nav-search{flex-basis:auto;flex-grow:1}
-  .site-nav .section{display:none}
+  /* البحث يبقى فوق الستارة والدُرج فيظلّ قابلًا للاستعمال والقائمة مفتوحة */
+  .nav-search{flex-basis:auto;flex-grow:1;position:relative;z-index:50}
   .nav-toggle-checkbox{
     clip-path:inset(50%);display:block;height:1px;opacity:0;overflow:hidden;position:absolute;width:1px
   }
   .nav-toggle-checkbox:focus-visible+.nav-toggle{outline:2px solid $(keycolor);outline-offset:2px}
-  .nav-toggle-checkbox:checked~.section{
-    background:$(posts.background.color);border:1px solid $(border.color);
-    display:block;flex:0 0 100%;margin-block:6px;order:3;padding-inline:14px
+
+  /* ===== دُرج القائمة الجانبي ===== */
+  /* ستارة معتمة خلف الدُرج: الضغط عليها يغلق القائمة */
+  .nav-backdrop{background:rgba(31,28,25,.45);display:none;inset:0;position:fixed;z-index:40}
+  .nav-toggle-checkbox:checked~.nav-backdrop{display:block}
+  /* الدُرج نفسه: مخفي خارج الشاشة من جهة البداية (يمين في العربية) */
+  .site-nav .section{
+    background:$(posts.background.color);border-inline-end:1px solid $(border.color);
+    bottom:0;box-shadow:0 0 46px -20px rgba(0,0,0,.5);display:block;inset-inline-start:0;overscroll-behavior:contain;
+    overflow-y:auto;padding:74px 22px 44px;position:fixed;top:0;transform:translateX(-100%);
+    transition:transform .3s ease,visibility 0s .3s;visibility:hidden;width:min(320px,86vw);z-index:45
   }
-  .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:6px;width:100%}
-  .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid $(border.color);padding:13px 4px}
-  .nav-toggle-checkbox:checked~.section .widget+.widget{
+  html[dir=rtl] .site-nav .section{transform:translateX(100%)}
+  .nav-toggle-checkbox:checked~.section,
+  html[dir=rtl] .nav-toggle-checkbox:checked~.section{
+    transform:translateX(0);transition:transform .3s ease,visibility 0s 0s;visibility:visible
+  }
+  /* قفل تمرير الصفحة ما دام الدُرج مفتوحًا */
+  body:has(.nav-toggle-checkbox:checked){overflow:hidden}
+
+  /* محتوى الدُرج */
+  .site-nav .widget-title{display:block;margin:0 0 4px;text-align:start}
+  .site-nav .widget-title::after{inset-inline-start:0;transform:none;width:34px}
+  .site-nav .section ul{display:block;padding:0;width:100%}
+  .site-nav .section li a{
+    border-bottom:1px solid $(border.color);display:block;font-size:16px;padding:14px 2px
+  }
+  .site-nav .section li:last-child a{border-bottom:0}
+  .site-nav .widget+.widget{
     border-inline-start:0;border-top:1px solid $(border.color);
-    margin-top:8px;padding-inline-start:0;padding-top:8px
+    margin-top:22px;padding-inline-start:0;padding-top:22px
   }
-  .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
-  .nav-toggle-checkbox:checked~.nav-toggle .icon-menu{display:none}
+  /* عند الفتح: زر ☰ في الشريط يفسح مكانه لزر ✕ داخل الدُرج */
+  .nav-toggle-checkbox:checked~.nav-toggle{visibility:hidden}
+  .nav-drawer-close{
+    align-items:center;background:$(posts.background.color);border:1px solid $(border.color);
+    border-radius:50%;color:$(posts.title.color);cursor:pointer;display:flex;height:38px;
+    inset-inline-start:calc(min(320px,86vw) - 50px);justify-content:center;opacity:0;position:fixed;
+    top:14px;transition:opacity .3s ease,visibility 0s .3s;visibility:hidden;width:38px;z-index:46
+  }
+  .nav-drawer-close svg{height:16px;width:16px;stroke-width:2}
+  .nav-drawer-close:hover{background:$(keycolor);border-color:$(keycolor);color:#fff}
+  .nav-toggle-checkbox:checked~.nav-drawer-close{
+    opacity:1;transition:opacity .3s ease,visibility 0s 0s;visibility:visible
+  }
 }
 @media (max-width:760px){
   .header-inner{padding-block:34px 28px}
@@ -752,6 +789,7 @@ iframe.blogger-iframe-colorize{width:100%}
             <svg aria-hidden='true' class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
             <svg aria-hidden='true' class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
           </label>
+          <label aria-hidden='true' class='nav-backdrop' for='nav-toggle'></label>
           <b:section class='nav-menu' id='nav_menu' maxwidgets='3' name='قائمة التنقل' showaddelement='yes'>
             <b:widget id='PageList1' locked='false' title='' type='PageList' version='2' visible='true'>
               <b:widget-settings>
@@ -787,6 +825,9 @@ iframe.blogger-iframe-colorize{width:100%}
                 <b:widget-setting name='link-3'>/search/label/غرائب الطبيعة</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main' var='this'>
+                <b:if cond='data:title and data:title != ""'>
+                  <h2 class='widget-title'><span><data:title/></span></h2>
+                </b:if>
                 <div class='widget-content'>
                   <ul>
                     <b:loop values='data:links' var='link'>
@@ -799,6 +840,10 @@ iframe.blogger-iframe-colorize{width:100%}
               </b:includable>
             </b:widget>
           </b:section>
+          <!-- زر إغلاق الدُرج: ثابت داخل الدُرج فيبقى في متناول اليد مهما كان موضع التمرير -->
+          <label aria-hidden='true' class='nav-drawer-close' for='nav-toggle' title='إغلاق القائمة'>
+            <svg height='16' viewBox='0 0 24 24' width='16'><path d='M6 6l12 12M18 6L6 18'/></svg>
+          </label>
           <!-- البحث: عنصر داخل شريط التنقل، وبفضل flex-basis:100% يأخذ سطرًا كاملًا بعرض الصفحة -->
           <form class='nav-search' expr:action='data:blog.searchUrl' method='get' role='search'>
             <button aria-label='ابحث' type='submit'>

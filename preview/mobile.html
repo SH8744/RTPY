@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html dir='rtl' lang='ar'>
+<head>
+<meta charset='UTF-8'/>
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<title>معاينة الجوال — دهشة موثّقة</title>
+<style>
+  body{background:#f2efe8;color:#1f1c19;font:16px/1.8 Tahoma,Arial,sans-serif;margin:0;padding:28px 18px 60px;text-align:center}
+  h1{font-size:22px;margin:0 0 8px}
+  p{color:#6f695e;margin:0 auto 26px;max-width:720px}
+  .frames{display:flex;flex-wrap:wrap;gap:28px;justify-content:center}
+  figure{margin:0}
+  figcaption{color:#6f695e;font-size:14px;margin-top:10px}
+  iframe{background:#fff;border:1px solid #e8e1d5;border-radius:14px;box-shadow:0 18px 40px -30px rgba(0,0,0,.5);display:block}
+</style>
+</head>
+<body>
+  <h1>معاينة الجوال</h1>
+  <p>إطاران بعرض هاتف حقيقي (390px) — القاعدة <code>@media (max-width:1000px)</code> فعّالة داخل الإطارين.
+     يمينًا: القائمة مغلقة، ويسارًا: الدُرج الجانبي مفتوح مع الستارة وزر الإغلاق.</p>
+  <div class='frames'>
+    <figure><iframe height='760' src='phone-closed.html' title='القائمة مغلقة' width='390'></iframe><figcaption>القائمة مغلقة (شريط + بحث)</figcaption></figure>
+    <figure><iframe height='760' src='phone-open.html' title='دُرج القائمة مفتوح' width='390'></iframe><figcaption>الدُرج الجانبي مفتوح + ستارة</figcaption></figure>
+  </div>
+</body>
+</html>

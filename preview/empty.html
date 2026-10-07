@@ -17,7 +17,7 @@
 
 =========================================================
   قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.3.2
+  الإصدار 1.3.3
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -159,7 +159,8 @@ pre code{background:0 0;padding:0;color:inherit}
   /* شريط التنقل شفاف ليظهر خلفه صورة الترويسة */
   background:transparent;
   border-bottom:1px solid transparent;
-  position:sticky;top:0;z-index:80;
+  /* السياق الطبقي للترويسة (.site-header z-index:60) هو ما يرفع الشريط فوق المحتوى */
+  position:sticky;top:0;
   transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease
 }
 /* عند تمرير الصفحة ووصول الشريط أعلى الشاشة يصبح معتمًا ليظهر فوق المحتوى بوضوح */
@@ -173,6 +174,9 @@ pre code{background:0 0;padding:0;color:inherit}
   min-height:64px;padding-block:8px;position:relative
 }
 .nav-toggle-checkbox{display:none}
+/* عناصر الدُرج الجانبي (تُستعمل في الجوال فقط) */
+.nav-backdrop{display:none}
+.nav-drawer-close{display:none}
 .nav-toggle{color:#1f1c19;cursor:pointer;display:none;padding:10px}
 .site-nav ul{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;list-style:none;margin:0;padding:0}
 .site-nav li a{
@@ -501,7 +505,8 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .footer-bottom .Attribution{margin-top:10px}
 .to-top{
   align-items:center;background:#9c7c48;border-radius:50%;bottom:26px;color:#fff;display:flex;
-  height:44px;inset-inline-end:24px;justify-content:center;position:fixed;width:44px;z-index:90;
+  /* z-index أقل من 60 (سياق الترويسة) حتى لا يظهر فوق ستارة دُرج الجوال */
+  height:44px;inset-inline-end:24px;justify-content:center;position:fixed;width:44px;z-index:55;
   box-shadow:0 10px 24px -12px rgba(0,0,0,.6);opacity:.9;transition:opacity .2s ease,transform .2s ease
 }
 .to-top:hover{color:#fff;opacity:1;transform:translateY(-3px)}
@@ -531,27 +536,59 @@ iframe.blogger-iframe-colorize{width:100%}
 @media (max-width:1000px){
   .layout-grid{gap:36px;grid-template-columns:minmax(0,1fr)}
   .sidebar{margin-top:8px}
-  .site-nav{position:relative}
   .nav-inner{justify-content:space-between;min-height:56px;padding-inline:10px}
   .nav-toggle{display:flex}
-  .nav-search{flex-basis:auto;flex-grow:1}
-  .site-nav .section{display:none}
+  /* البحث يبقى فوق الستارة والدُرج فيظلّ قابلًا للاستعمال والقائمة مفتوحة */
+  .nav-search{flex-basis:auto;flex-grow:1;position:relative;z-index:50}
   .nav-toggle-checkbox{
     clip-path:inset(50%);display:block;height:1px;opacity:0;overflow:hidden;position:absolute;width:1px
   }
   .nav-toggle-checkbox:focus-visible+.nav-toggle{outline:2px solid #9c7c48;outline-offset:2px}
-  .nav-toggle-checkbox:checked~.section{
-    background:#ffffff;border:1px solid #e8e1d5;
-    display:block;flex:0 0 100%;margin-block:6px;order:3;padding-inline:14px
+
+  /* ===== دُرج القائمة الجانبي ===== */
+  /* ستارة معتمة خلف الدُرج: الضغط عليها يغلق القائمة */
+  .nav-backdrop{background:rgba(31,28,25,.45);display:none;inset:0;position:fixed;z-index:40}
+  .nav-toggle-checkbox:checked~.nav-backdrop{display:block}
+  /* الدُرج نفسه: مخفي خارج الشاشة من جهة البداية (يمين في العربية) */
+  .site-nav .section{
+    background:#ffffff;border-inline-end:1px solid #e8e1d5;
+    bottom:0;box-shadow:0 0 46px -20px rgba(0,0,0,.5);display:block;inset-inline-start:0;overscroll-behavior:contain;
+    overflow-y:auto;padding:74px 22px 44px;position:fixed;top:0;transform:translateX(-100%);
+    transition:transform .3s ease,visibility 0s .3s;visibility:hidden;width:min(320px,86vw);z-index:45
   }
-  .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:6px;width:100%}
-  .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid #e8e1d5;padding:13px 4px}
-  .nav-toggle-checkbox:checked~.section .widget+.widget{
+  html[dir=rtl] .site-nav .section{transform:translateX(100%)}
+  .nav-toggle-checkbox:checked~.section,
+  html[dir=rtl] .nav-toggle-checkbox:checked~.section{
+    transform:translateX(0);transition:transform .3s ease,visibility 0s 0s;visibility:visible
+  }
+  /* قفل تمرير الصفحة ما دام الدُرج مفتوحًا */
+  body:has(.nav-toggle-checkbox:checked){overflow:hidden}
+
+  /* محتوى الدُرج */
+  .site-nav .widget-title{display:block;margin:0 0 4px;text-align:start}
+  .site-nav .widget-title::after{inset-inline-start:0;transform:none;width:34px}
+  .site-nav .section ul{display:block;padding:0;width:100%}
+  .site-nav .section li a{
+    border-bottom:1px solid #e8e1d5;display:block;font-size:16px;padding:14px 2px
+  }
+  .site-nav .section li:last-child a{border-bottom:0}
+  .site-nav .widget+.widget{
     border-inline-start:0;border-top:1px solid #e8e1d5;
-    margin-top:8px;padding-inline-start:0;padding-top:8px
+    margin-top:22px;padding-inline-start:0;padding-top:22px
   }
-  .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
-  .nav-toggle-checkbox:checked~.nav-toggle .icon-menu{display:none}
+  /* عند الفتح: زر ☰ في الشريط يفسح مكانه لزر ✕ داخل الدُرج */
+  .nav-toggle-checkbox:checked~.nav-toggle{visibility:hidden}
+  .nav-drawer-close{
+    align-items:center;background:#ffffff;border:1px solid #e8e1d5;
+    border-radius:50%;color:#1f1c19;cursor:pointer;display:flex;height:38px;
+    inset-inline-start:calc(min(320px,86vw) - 50px);justify-content:center;opacity:0;position:fixed;
+    top:14px;transition:opacity .3s ease,visibility 0s .3s;visibility:hidden;width:38px;z-index:46
+  }
+  .nav-drawer-close svg{height:16px;width:16px;stroke-width:2}
+  .nav-drawer-close:hover{background:#9c7c48;border-color:#9c7c48;color:#fff}
+  .nav-toggle-checkbox:checked~.nav-drawer-close{
+    opacity:1;transition:opacity .3s ease,visibility 0s 0s;visibility:visible
+  }
 }
 @media (max-width:760px){
   .header-inner{padding-block:34px 28px}
@@ -621,6 +658,7 @@ iframe.blogger-iframe-colorize{width:100%}
         <svg class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
         <svg class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
       </label>
+      <label aria-hidden='true' class='nav-backdrop' for='nav-toggle'></label>
       <div class='nav-menu section'>
         <div class='widget PageList'><div class='widget-content'>
           <ul>
@@ -630,7 +668,9 @@ iframe.blogger-iframe-colorize{width:100%}
             <li><a href='empty.html'>حالة فارغة</a></li>
           </ul>
         </div></div>
-        <div class='widget LinkList'><div class='widget-content'>
+        <div class='widget LinkList'>
+          <h2 class='widget-title'><span>أقسام المدونة</span></h2>
+          <div class='widget-content'>
           <ul>
             <li><a href='#'>الفضاء</a></li>
             <li><a href='#'>الإنسان</a></li>
@@ -639,6 +679,9 @@ iframe.blogger-iframe-colorize{width:100%}
           </ul>
         </div></div>
       </div>
+      <label aria-hidden='true' class='nav-drawer-close' for='nav-toggle' title='إغلاق القائمة'>
+        <svg height='16' viewBox='0 0 24 24' width='16'><path d='M6 6l12 12M18 6L6 18'/></svg>
+      </label>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
