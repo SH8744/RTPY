@@ -118,6 +118,22 @@ python3 tools/build-preview.py
 - صور المشاركات تُصغَّر عبر دالة بلوجر `resizeImage` عند توفر `isResizable`، مع دعم صور يوتيوب.
 - المعاينة في مجلد `preview/` هي **محاكاة ثابتة** للتصميم، وليست مخرجات بلوجر الفعلية.
 
+### ⚠️ تنبيه مهم عند التعديل على متغيّرات القالب (b:skin)
+
+**وصف المتغيّر (`description="..."`) يجب أن يكون نصًّا بسيطًا جدًّا:** حروفًا ومسافات فقط،
+بلا أقواس `()` ولا شرطات `—` ولا رموز `: , ;` ولا حروف لاتينية مثل `rgba` ولا أرقام، ويُفضّل أن
+يبقى قصيرًا (أقل من 40 حرفًا). أي مخالفة تُنتج خطأ رفع مثل:
+
+```
+com.google.blogger.b2.layouts.framework.skin.InvalidVariableException:
+Invalid variable declaration in page skin:
+This is not a valid description for a skin variable. Input: ...
+```
+
+كذلك لا تُخلِط أنواع المتغيّرات: `color` يحتاج قيمة لون، و`font` يحتاج اختصار خط
+(مثل `16px Almarai, sans-serif`)، و`background` يحتاج **ستة مكوّنات بالضبط**
+(مثل `$(color) none repeat scroll top left`).
+
 ### ⚠️ تنبيه مهم عند التعديل على CSS
 
 **لا تكتب أي محرف غير لاتيني داخل قيم CSS** (مثل سهم `←` أو `…`)، لأن بلوجر يرمّزها إلى
@@ -134,6 +150,19 @@ python3 tools/build-preview.py
 ---
 
 ## 6) سجل التغييرات
+
+### 1.2.1
+
+- **إصلاح خطأ الرفع** `InvalidVariableException: This is not a valid description for a skin variable`:
+  كانت أوصاف متغيّرات `b:skin` تحتوي رموزًا (أقواس، شرطة طويلة، حروف لاتينية مثل rgba، أرقام).
+  أُعيدت كتابة **كل الأوصاف العشرين** نصًّا عربيًّا بسيطًا (حروف ومسافات فقط، أطول وصف 32 حرفًا)،
+  مع إبقاء أسماء المتغيّرات وقيمها كما هي.
+- أُضيف فحص آلي في سكربت التطوير يمنع أي وصف يحتوي رموزًا أو يزيد عن 40 حرفًا.
+
+### 1.2.0
+
+- خلفية الترويسة: متغيّرا `header.background` (رفع صورة) و `header.overlay.color`
+  (طبقة شبه شفافة)، ومعاينة مركّبة `preview/index-demo.html`، وصورة تجريبية `preview/demo-header-raw.png`.
 
 ### 1.1.2
 

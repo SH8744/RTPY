@@ -30,7 +30,7 @@
 Variable definitions
 ====================
 
-<Variable name="keycolor" description="اللون الرئيسي (ذهبي كلاسيكي)" type="color" default="#9c7c48" value="#9c7c48"/>
+<Variable name="keycolor" description="اللون الرئيسي" type="color" default="#9c7c48" value="#9c7c48"/>
 <Variable name="accent.dark.color" description="اللون الرئيسي الغامق" type="color" default="#7d6135" value="#7d6135"/>
 <Variable name="body.background.color" description="لون خلفية الصفحة" type="color" default="#f7f4ee" value="#f7f4ee"/>
 <Variable name="posts.background.color" description="لون خلفية البطاقات" type="color" default="#ffffff" value="#ffffff"/>
@@ -47,9 +47,9 @@ Variable definitions
 <Variable name="footer.background.color" description="خلفية التذييل" type="color" default="#23292f" value="#23292f"/>
 <Variable name="footer.text.color" description="نص التذييل" type="color" default="#b8c0c7" value="#b8c0c7"/>
 <Variable name="footer.link.color" description="روابط التذييل" type="color" default="#ffffff" value="#ffffff"/>
-<Variable name="header.background.color" description="لون خلفية الترويسة (يُستخدم إن لم تُحدَّد صورة)" type="color" default="#ffffff" value="#ffffff"/>
-<Variable name="header.background" description="خلفية الترويسة: ارفع صورة من هنا (اختياري)" type="background" color="$(header.background.color)" default="$(color) none repeat scroll top left" value="$(color) none repeat scroll top left"/>
-<Variable name="header.overlay.color" description="طبقة شبه شفافة فوق صورة الترويسة (اضبط الشفافية في قيمة rgba — اجعلها 0 لتعطيلها)" type="color" default="rgba(247, 244, 238, 0)" value="rgba(247, 244, 238, 0)"/>
+<Variable name="header.background.color" description="لون خلفية الترويسة" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="header.background" description="صورة خلفية الترويسة" type="background" color="$(header.background.color)" default="$(color) none repeat scroll top left" value="$(color) none repeat scroll top left"/>
+<Variable name="header.overlay.color" description="طبقة شبه شفافة فوق صورة الترويسة" type="color" default="rgba(247, 244, 238, 0)" value="rgba(247, 244, 238, 0)"/>
 <Variable name="layout.width" description="أقصى عرض للتخطيط" type="length" min="900px" max="1700px" default="1180px" value="1180px"/>
 <Variable name="sidebar.width" description="عرض الشريط الجانبي" type="length" min="200px" max="480px" default="320px" value="320px"/>
 */
