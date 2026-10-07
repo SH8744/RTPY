@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-يبني معاينة HTML ثابتة من ملف القالب aseel.xml:
+يبني معاينة HTML ثابتة من ملف القالب dahsha-muthaqa.xml:
 - يستخرج CSS من <b:skin> ويستبدل متغيّرات بلوجر $(name) بقيمها.
 - يستخرج CSS من <b:template-skin>. (لا يُستخدم في المعاينة)
 - ينتج preview/index.html (الرئيسية) و preview/post.html (صفحة مشاركة) بمحتوى عربي تجريبي
@@ -13,7 +13,7 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-XML = os.path.join(ROOT, 'aseel.xml')
+XML = os.path.join(ROOT, 'dahsha-muthaqa.xml')
 OUT = os.path.join(ROOT, 'preview')
 
 
@@ -119,7 +119,7 @@ HOME_BODY = """
         <button aria-label='ابحث' type='submit'>
           <svg height='16' viewBox='0 0 24 24' width='16'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
         </button>
-        <input aria-label='ابحث' placeholder='ابحث في هذه المدونة' type='search'/>
+        <input aria-label='ابحث' placeholder='ابحث في المدونة' type='search'/>
       </form>
     </div>
   </nav>
@@ -183,7 +183,7 @@ SIDEBAR = """
   <h2 class='widget-title'><span>من أنا</span></h2>
   <div class='widget-content'>
     <a class='profile-image-link' href='#'>
-      <img class='profile-img' alt='صورتي' src='https://picsum.photos/seed/aseel-me/208/208'/>
+      <img class='profile-img' alt='صورتي' src='https://picsum.photos/seed/dahsha-me/208/208'/>
     </a>
     <div class='profile-name'>دهشة موثّقة</div>
     <div class='profile-textblock'>أكتب عن الكتب والمدن والحكايات الصغيرة التي تستحق أن تُروى.</div>
@@ -195,14 +195,14 @@ SIDEBAR = """
   <h2 class='widget-title'><span>الأكثر قراءة</span></h2>
   <div class='widget-content'>
     <div class='popular-item'>
-      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/aseel-p1/170/170' alt=''/></a>
+      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/dahsha-p1/170/170' alt=''/></a>
       <div class='item-content'>
         <h3 class='item-title'><a href='post.html'>حكاية الروائي الذي كره الحواشي</a></h3>
         <div class='item-meta'>١٢ أغسطس ٢٠٢٦</div>
       </div>
     </div>
     <div class='popular-item'>
-      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/aseel-p2/170/170' alt=''/></a>
+      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/dahsha-p2/170/170' alt=''/></a>
       <div class='item-content'>
         <h3 class='item-title'><a href='post.html'>في مدح المكتبات القديمة</a></h3>
         <div class='item-meta'>٣ يوليو ٢٠٢٦</div>
@@ -279,7 +279,7 @@ FOOTER = """
   </div>
   <div class='footer-bottom'>
     <div class='container'>
-      <div class='footer-note'>دهشة موثّقة © <span class='aseel-year'>2026</span> — جميع الحقوق محفوظة</div>
+      <div class='footer-note'>دهشة موثّقة © <span class='dahsha-year'>2026</span> — جميع الحقوق محفوظة</div>
       <div class='widget Attribution'>
         <div class='widget-content'>
           <div class='blogger'><a href='#' rel='nofollow'>مدعوم بواسطة Blogger</a></div>
@@ -294,7 +294,7 @@ FOOTER = """
 </a>
 <script>
 (function(){
-  document.querySelectorAll('.aseel-year').forEach(function(e){e.textContent=new Date().getFullYear();});
+  document.querySelectorAll('.dahsha-year').forEach(function(e){e.textContent=new Date().getFullYear();});
   var t=document.querySelector('.to-top');
   if(t){var u=function(){window.scrollY>420?t.classList.remove('is-hidden'):t.classList.add('is-hidden');};
   window.addEventListener('scroll',u,{passive:true});u();}
@@ -357,7 +357,7 @@ POST_BODY = """
           </div>
         </header>
         <div class='entry-content'>
-          <img alt='' src='https://picsum.photos/seed/aseel-hero/1200/700'/>
+          <img alt='' src='https://picsum.photos/seed/dahsha-hero/1200/700'/>
           <p>هناك روايات تُقرأ مرة واحدة، وهناك روايات تعود إليك في الحواشي؛ في تلك المساحة الصغيرة أسفل
           الصفحة حيث يترك الكاتب صوتًا خفيًّا، همسًا لا يُقال في المتن. عن هذا الهمس كانت الحكاية.</p>
           <h2>الحاشية كصوت ثانٍ</h2>
@@ -404,7 +404,7 @@ note = { page: 214, voice: "whisper" }</code></pre>
         </div>
 
         <div class='author-box'>
-          <img alt='' src='https://picsum.photos/seed/aseel-author/160/160'/>
+          <img alt='' src='https://picsum.photos/seed/dahsha-author/160/160'/>
           <div class='author-info'>
             <div class='author-name'>دهشة موثّقة</div>
             <p class='author-about'>أكتب عن الكتب والمدن والحكايات الصغيرة التي تستحق أن تُروى، وأظلّ وفيًّا للحواشي.</p>
@@ -424,7 +424,7 @@ note = { page: 214, voice: "whisper" }</code></pre>
             <div class='comment'>
               <div class='comment-block'>
                 <div class='comment-header'>
-                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/aseel-c1/84/84' alt=''/></div>
+                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c1/84/84' alt=''/></div>
                   <div class='comment-info'>
                     <div class='comment-author'><a href='#'>سالم العتيبي</a> قال...</div>
                     <span class='datetime'><a href='#'>١٣ أغسطس ٢٠٢٦، ٩:٤١ ص</a></span>
@@ -436,7 +436,7 @@ note = { page: 214, voice: "whisper" }</code></pre>
                 <div class='comment'>
                   <div class='comment-block'>
                     <div class='comment-header'>
-                      <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/aseel-c2/84/84' alt=''/></div>
+                      <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c2/84/84' alt=''/></div>
                       <div class='comment-info'>
                         <div class='comment-author'><a href='#'>دهشة موثّقة</a> قال...</div>
                         <span class='datetime'><a href='#'>١٣ أغسطس ٢٠٢٦، ١١:٠٢ ص</a></span>
@@ -450,7 +450,7 @@ note = { page: 214, voice: "whisper" }</code></pre>
             <div class='comment'>
               <div class='comment-block'>
                 <div class='comment-header'>
-                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/aseel-c3/84/84' alt=''/></div>
+                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c3/84/84' alt=''/></div>
                   <div class='comment-info'>
                     <div class='comment-author'><a href='#'>مريم</a> قالت...</div>
                     <span class='datetime'><a href='#'>١٤ أغسطس ٢٠٢٦، ٧:١٥ م</a></span>
@@ -490,7 +490,7 @@ def page(title, body_inner):
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
 <link href='https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Almarai:wght@300;400;700;800&amp;display=swap' rel='stylesheet'/>
 <style>
-/* ====== هذه المعاينة تُبنى آليًّا من ملف القالب aseel.xml (نفس CSS) ====== */
+/* ====== هذه المعاينة تُبنى آليًّا من ملف القالب dahsha-muthaqa.xml (نفس CSS) ====== */
 {CSS}
 </style>
 </head>
@@ -505,13 +505,13 @@ def main():
     os.makedirs(OUT, exist_ok=True)
 
     cards = [
-        card('https://picsum.photos/seed/aseel-a/800/600', ['أدب', 'قراءات'],
+        card('https://picsum.photos/seed/dahsha-a/800/600', ['أدب', 'قراءات'],
              'حكاية الروائي الذي كره الحواشي', 'دهشة موثّقة', '١٢ أغسطس ٢٠٢٦', '٣ تعليقات',
              'في المساحة الصغيرة أسفل الصفحة يترك الكاتب صوتًا خفيًّا، همسًا لا يُقال في المتن؛ عن هذا الهمس كانت الحكاية.'),
-        card('https://picsum.photos/seed/aseel-b/800/600', ['فنون'],
+        card('https://picsum.photos/seed/dahsha-b/800/600', ['فنون'],
              'في مدح المكتبات القديمة', 'دهشة موثّقة', '٣ يوليو ٢٠٢٦', 'تعليقان',
              'رائحة الورق القديم ليست تفصيلًا عابرًا، بل ذاكرة كاملة تفتح أبوابها كلما اقتربت من الرفّ الثالث.'),
-        card('https://picsum.photos/seed/aseel-c/800/600', ['تاريخ'],
+        card('https://picsum.photos/seed/dahsha-c/800/600', ['تاريخ'],
              'عن الفهارس، وذاكرة الكتب', 'دهشة موثّقة', '٢١ يونيو ٢٠٢٦', 'أضف تعليقًا',
              'الفهرس هو الخريطة التي لا يكترث لها أحد، ومع ذلك بها يهتدي القارئ إلى ما لا يتوقّعه.'),
         card('', ['خواطر'],

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='aseel.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='dahsha-muthaqa.xml' b:templateVersion='1.1.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -14,11 +14,15 @@
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
 <link href='https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Almarai:wght@300;400;700;800&amp;display=swap' rel='stylesheet'/>
 
-<b:skin version='1.3.3'><![CDATA[/*!
+<b:skin version='1.3.3'><![CDATA[/*!************************************************
+ * Blogger Template Style
+ * Name: دهشة موثّقة
+ **************************************************/
+/*!
 
 =========================================================
-  قالب «أصيل» (Aseel) — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.0.0
+  قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
+  الإصدار 1.1.0
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -144,9 +148,12 @@ pre code{background:0 0;padding:0;color:inherit}
   box-shadow:0 6px 18px -14px rgba(0,0,0,.35);
   position:sticky;top:0;z-index:80
 }
-.nav-inner{align-items:center;display:flex;justify-content:center;min-height:58px;position:relative}
+.nav-inner{
+  align-items:center;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
+  min-height:64px;padding-block:6px;position:relative
+}
 .nav-toggle-checkbox{display:none}
-.nav-toggle{display:none;cursor:pointer;padding:14px;position:absolute;inset-inline-start:6px;color:$(posts.title.color)}
+.nav-toggle{color:$(posts.title.color);cursor:pointer;display:none;padding:10px}
 .site-nav ul{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;list-style:none;margin:0;padding:0}
 .site-nav li a{
   border-bottom:2px solid transparent;color:$(body.text.color);display:block;
@@ -155,14 +162,22 @@ pre code{background:0 0;padding:0;color:inherit}
 .site-nav li a:hover,.site-nav li.selected>a,.site-nav li a.current-item{color:$(keycolor);border-bottom-color:$(keycolor)}
 .site-nav .widget-title{display:none}
 .nav-search{
-  align-items:center;background:transparent;border:1px solid $(border.color);border-radius:999px;
-  display:flex;gap:6px;inset-inline-end:10px;padding:5px 12px;position:absolute;top:50%;transform:translateY(-50%)
+  align-items:center;background:$(body.background.color);border:1px solid $(border.color);
+  border-radius:999px;display:flex;gap:2px;padding:4px;
+  transition:border-color .25s ease,box-shadow .25s ease
 }
-.nav-search input{background:0 0;border:0;color:$(body.text.color);font:inherit;font-size:14px;outline:0;padding:3px 0;width:132px}
+.nav-search:focus-within{border-color:$(keycolor);box-shadow:0 0 0 3px rgba(156,124,72,.13)}
+.nav-search button{
+  align-items:center;background:$(keycolor);border:0;border-radius:50%;color:#fff;cursor:pointer;
+  display:flex;flex:0 0 34px;height:34px;justify-content:center;transition:background .2s ease;width:34px
+}
+.nav-search button:hover{background:$(accent.dark.color)}
+.nav-search svg{height:15px;width:15px;stroke-width:2}
+.nav-search input{
+  background:0 0;border:0;color:$(body.text.color);font:inherit;font-size:14.5px;
+  min-width:0;outline:0;padding:6px 12px;width:210px
+}
 .nav-search input::placeholder{color:$(muted.color)}
-.nav-search button{background:0 0;border:0;color:$(muted.color);cursor:pointer;display:flex;padding:2px}
-.nav-search button:hover{color:$(keycolor)}
-.nav-search svg{height:16px;width:16px}
 
 /* ============================================================
    4) التخطيط العام
@@ -220,9 +235,9 @@ pre code{background:0 0;padding:0;color:inherit}
   align-items:center;display:inline-flex;font-size:13.5px;font-weight:700;gap:8px;
   letter-spacing:.06em;text-transform:uppercase
 }
-.read-more::after{content:"←";font-size:15px;transition:transform .25s ease}
+.read-more::after{content:"\2190";font-size:15px;transition:transform .25s ease}
 .read-more:hover::after{transform:translateX(-4px)}
-html[dir=ltr] .read-more::after{content:"→"}
+html[dir=ltr] .read-more::after{content:"\2192"}
 html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 
 /* ============================================================
@@ -321,6 +336,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 /* أدوات HTML/نص */
 .widget .widget-content{line-height:1.9;overflow-wrap:break-word}
 .widget .widget-content p:last-child{margin-bottom:0}
+.widget-empty{color:$(muted.color);font-size:14px;margin:0;text-align:center}
 
 /* الملف الشخصي */
 .widget.Profile{text-align:center}
@@ -489,16 +505,16 @@ iframe.blogger-iframe-colorize{width:100%}
   .layout-grid{gap:36px;grid-template-columns:minmax(0,1fr)}
   .sidebar{margin-top:8px}
   .site-nav{position:relative}
-  .nav-inner{flex-wrap:wrap;justify-content:flex-start;min-height:56px;padding-inline:56px}
-  .nav-toggle{display:block;inset-inline-start:6px;top:0}
+  .nav-inner{gap:8px;justify-content:space-between;min-height:56px;padding-inline:10px}
+  .nav-toggle{display:flex}
+  .nav-search{flex:1 1 auto;order:2}
+  .nav-search input{flex:1 1 auto;width:auto}
   .site-nav .widget,.site-nav .section{display:none}
   .nav-toggle-checkbox:checked~.section{display:block;flex:0 0 100%;order:3}
   .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:8px 14px;width:100%}
   .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid $(border.color);padding:13px 4px}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-menu{display:none}
-  .nav-search{inset-inline-end:8px;padding:4px 10px;top:28px}
-  .nav-search input{width:96px}
 }
 @media (max-width:760px){
   .header-inner{padding-block:34px 28px}
@@ -514,7 +530,8 @@ iframe.blogger-iframe-colorize{width:100%}
   .site-main{padding-block:30px 40px}
 }
 @media (max-width:420px){
-  .nav-search{display:none}
+  .nav-search button{flex:0 0 30px;height:30px;width:30px}
+  .nav-search input{font-size:13.5px;padding:6px 8px}
   .blog-pager{flex-direction:column;align-items:stretch;text-align:center}
   .blog-pager a{display:block}
 }
@@ -586,7 +603,7 @@ iframe.blogger-iframe-colorize{width:100%}
       }
       body#layout:before {
         color: #9c7c48;
-        content: "قالب أصيل — الإصدار 1.0";
+        content: "Dahsha Muthaqa - Theme 1.1";
         display: block;
         font: 700 14px/1 sans-serif;
         padding: 14px 10px;
@@ -710,7 +727,7 @@ iframe.blogger-iframe-colorize{width:100%}
             <button aria-label='ابحث' type='submit'>
               <svg height='16' viewBox='0 0 24 24' width='16'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
             </button>
-            <input aria-label='ابحث في هذه المدونة' autocomplete='off' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : ""' name='q' type='search'/>
+            <input aria-label='ابحث في هذه المدونة' autocomplete='off' expr:value='data:view.isSearch ? data:view.search.query.escaped : ""' name='q' placeholder='ابحث في المدونة' type='search'/>
           </form>
         </div>
       </nav>
@@ -998,9 +1015,12 @@ iframe.blogger-iframe-colorize{width:100%}
                   <b:if cond='data:view.isError'>
                     <h2>الصفحة غير موجودة</h2>
                     <p><data:navMessage/></p>
+                  <b:elseif cond='data:view.isSearch or data:view.isArchive or data:view.isLabelSearch'/>
+                    <h2>لا توجد نتائج</h2>
+                    <p>لم يتم العثور على مشاركات مطابقة. جرّب كلمات مفتاحية أخرى أو استعرض أرشيف المدونة.</p>
                   <b:else/>
-                    <h2>لا توجد مشاركات</h2>
-                    <p>لم يتم العثور على مشاركات مطابقة. جرّب كلمات مفتاحية أخرى أو عد إلى الصفحة الرئيسية.</p>
+                    <h2>لا توجد مشاركات بعد</h2>
+                    <p>لم تُنشر أي مشاركات على هذه المدونة حتى الآن. عُد قريبًا إن شاء الله.</p>
                   </b:if>
                   <a class='read-more' expr:href='data:blog.homepageUrl'>الصفحة الرئيسية</a>
                 </div>
@@ -1285,6 +1305,9 @@ iframe.blogger-iframe-colorize{width:100%}
               <b:includable id='main' var='this'>
                 <b:include name='widgetHeading'/>
                 <div class='widget-content'>
+                  <b:if cond='data:posts.size == 0'>
+                    <p class='widget-empty'>لا توجد مشاركات بعد.</p>
+                  </b:if>
                   <b:loop index='i' values='data:posts' var='post'>
                     <div class='popular-item'>
                       <b:if cond='data:this.postDisplay.showFeaturedImage and data:post.featuredImage'>
@@ -1423,7 +1446,7 @@ iframe.blogger-iframe-colorize{width:100%}
       <div class='footer-bottom'>
         <div class='container'>
           <div class='footer-note'>
-            <data:blog.title/> © <span id='aseel-year'>2026</span> — جميع الحقوق محفوظة
+            <data:blog.title/> © <span id='dahsha-year'>2026</span> — جميع الحقوق محفوظة
           </div>
           <b:section class='footer-credit' id='footer_credit' maxwidgets='1' name='حقوق النشر' showaddelement='no'>
             <b:widget id='Attribution1' locked='true' title='' type='Attribution' visible='true'>
@@ -1455,7 +1478,7 @@ iframe.blogger-iframe-colorize{width:100%}
     <script type='text/javascript'>
       //<![CDATA[
       (function () {
-        var y = document.getElementById('aseel-year');
+        var y = document.getElementById('dahsha-year');
         if (y) { y.textContent = new Date().getFullYear(); }
         var t = document.querySelector('.to-top');
         if (t) {

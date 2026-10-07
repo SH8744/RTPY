@@ -8,12 +8,16 @@
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
 <link href='https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Almarai:wght@300;400;700;800&amp;display=swap' rel='stylesheet'/>
 <style>
-/* ====== هذه المعاينة تُبنى آليًّا من ملف القالب aseel.xml (نفس CSS) ====== */
+/* ====== هذه المعاينة تُبنى آليًّا من ملف القالب dahsha-muthaqa.xml (نفس CSS) ====== */
+/*!************************************************
+ * Blogger Template Style
+ * Name: دهشة موثّقة
+ **************************************************/
 /*!
 
 =========================================================
-  قالب «أصيل» (Aseel) — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.0.0
+  قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
+  الإصدار 1.1.0
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -139,9 +143,12 @@ pre code{background:0 0;padding:0;color:inherit}
   box-shadow:0 6px 18px -14px rgba(0,0,0,.35);
   position:sticky;top:0;z-index:80
 }
-.nav-inner{align-items:center;display:flex;justify-content:center;min-height:58px;position:relative}
+.nav-inner{
+  align-items:center;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
+  min-height:64px;padding-block:6px;position:relative
+}
 .nav-toggle-checkbox{display:none}
-.nav-toggle{display:none;cursor:pointer;padding:14px;position:absolute;inset-inline-start:6px;color:#1f1c19}
+.nav-toggle{color:#1f1c19;cursor:pointer;display:none;padding:10px}
 .site-nav ul{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;list-style:none;margin:0;padding:0}
 .site-nav li a{
   border-bottom:2px solid transparent;color:#4a443c;display:block;
@@ -150,14 +157,22 @@ pre code{background:0 0;padding:0;color:inherit}
 .site-nav li a:hover,.site-nav li.selected>a,.site-nav li a.current-item{color:#9c7c48;border-bottom-color:#9c7c48}
 .site-nav .widget-title{display:none}
 .nav-search{
-  align-items:center;background:transparent;border:1px solid #e8e1d5;border-radius:999px;
-  display:flex;gap:6px;inset-inline-end:10px;padding:5px 12px;position:absolute;top:50%;transform:translateY(-50%)
+  align-items:center;background:#f7f4ee;border:1px solid #e8e1d5;
+  border-radius:999px;display:flex;gap:2px;padding:4px;
+  transition:border-color .25s ease,box-shadow .25s ease
 }
-.nav-search input{background:0 0;border:0;color:#4a443c;font:inherit;font-size:14px;outline:0;padding:3px 0;width:132px}
+.nav-search:focus-within{border-color:#9c7c48;box-shadow:0 0 0 3px rgba(156,124,72,.13)}
+.nav-search button{
+  align-items:center;background:#9c7c48;border:0;border-radius:50%;color:#fff;cursor:pointer;
+  display:flex;flex:0 0 34px;height:34px;justify-content:center;transition:background .2s ease;width:34px
+}
+.nav-search button:hover{background:#7d6135}
+.nav-search svg{height:15px;width:15px;stroke-width:2}
+.nav-search input{
+  background:0 0;border:0;color:#4a443c;font:inherit;font-size:14.5px;
+  min-width:0;outline:0;padding:6px 12px;width:210px
+}
 .nav-search input::placeholder{color:#8c8578}
-.nav-search button{background:0 0;border:0;color:#8c8578;cursor:pointer;display:flex;padding:2px}
-.nav-search button:hover{color:#9c7c48}
-.nav-search svg{height:16px;width:16px}
 
 /* ============================================================
    4) التخطيط العام
@@ -215,9 +230,9 @@ pre code{background:0 0;padding:0;color:inherit}
   align-items:center;display:inline-flex;font-size:13.5px;font-weight:700;gap:8px;
   letter-spacing:.06em;text-transform:uppercase
 }
-.read-more::after{content:"←";font-size:15px;transition:transform .25s ease}
+.read-more::after{content:"\2190";font-size:15px;transition:transform .25s ease}
 .read-more:hover::after{transform:translateX(-4px)}
-html[dir=ltr] .read-more::after{content:"→"}
+html[dir=ltr] .read-more::after{content:"\2192"}
 html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 
 /* ============================================================
@@ -316,6 +331,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 /* أدوات HTML/نص */
 .widget .widget-content{line-height:1.9;overflow-wrap:break-word}
 .widget .widget-content p:last-child{margin-bottom:0}
+.widget-empty{color:#8c8578;font-size:14px;margin:0;text-align:center}
 
 /* الملف الشخصي */
 .widget.Profile{text-align:center}
@@ -484,16 +500,16 @@ iframe.blogger-iframe-colorize{width:100%}
   .layout-grid{gap:36px;grid-template-columns:minmax(0,1fr)}
   .sidebar{margin-top:8px}
   .site-nav{position:relative}
-  .nav-inner{flex-wrap:wrap;justify-content:flex-start;min-height:56px;padding-inline:56px}
-  .nav-toggle{display:block;inset-inline-start:6px;top:0}
+  .nav-inner{gap:8px;justify-content:space-between;min-height:56px;padding-inline:10px}
+  .nav-toggle{display:flex}
+  .nav-search{flex:1 1 auto;order:2}
+  .nav-search input{flex:1 1 auto;width:auto}
   .site-nav .widget,.site-nav .section{display:none}
   .nav-toggle-checkbox:checked~.section{display:block;flex:0 0 100%;order:3}
   .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:8px 14px;width:100%}
   .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid #e8e1d5;padding:13px 4px}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-menu{display:none}
-  .nav-search{inset-inline-end:8px;padding:4px 10px;top:28px}
-  .nav-search input{width:96px}
 }
 @media (max-width:760px){
   .header-inner{padding-block:34px 28px}
@@ -509,7 +525,8 @@ iframe.blogger-iframe-colorize{width:100%}
   .site-main{padding-block:30px 40px}
 }
 @media (max-width:420px){
-  .nav-search{display:none}
+  .nav-search button{flex:0 0 30px;height:30px;width:30px}
+  .nav-search input{font-size:13.5px;padding:6px 8px}
   .blog-pager{flex-direction:column;align-items:stretch;text-align:center}
   .blog-pager a{display:block}
 }
@@ -564,7 +581,7 @@ iframe.blogger-iframe-colorize{width:100%}
         <button aria-label='ابحث' type='submit'>
           <svg height='16' viewBox='0 0 24 24' width='16'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
         </button>
-        <input aria-label='ابحث' placeholder='ابحث في هذه المدونة' type='search'/>
+        <input aria-label='ابحث' placeholder='ابحث في المدونة' type='search'/>
       </form>
     </div>
   </nav>
@@ -576,7 +593,7 @@ iframe.blogger-iframe-colorize{width:100%}
       <div class='post-feed'>
         
 <article class='post-card'>
-  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/aseel-a/800/600'/></a>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-a/800/600'/></a>
   <div class='post-body-wrap'>
     <div class='post-labels'><a href='#'>أدب</a><a href='#'>قراءات</a></div>
     <h2 class='entry-title'><a href='post.html'>حكاية الروائي الذي كره الحواشي</a></h2>
@@ -600,7 +617,7 @@ iframe.blogger-iframe-colorize{width:100%}
 </article>
 
 <article class='post-card'>
-  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/aseel-b/800/600'/></a>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-b/800/600'/></a>
   <div class='post-body-wrap'>
     <div class='post-labels'><a href='#'>فنون</a></div>
     <h2 class='entry-title'><a href='post.html'>في مدح المكتبات القديمة</a></h2>
@@ -624,7 +641,7 @@ iframe.blogger-iframe-colorize{width:100%}
 </article>
 
 <article class='post-card'>
-  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/aseel-c/800/600'/></a>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-c/800/600'/></a>
   <div class='post-body-wrap'>
     <div class='post-labels'><a href='#'>تاريخ</a></div>
     <h2 class='entry-title'><a href='post.html'>عن الفهارس، وذاكرة الكتب</a></h2>
@@ -682,7 +699,7 @@ iframe.blogger-iframe-colorize{width:100%}
   <h2 class='widget-title'><span>من أنا</span></h2>
   <div class='widget-content'>
     <a class='profile-image-link' href='#'>
-      <img class='profile-img' alt='صورتي' src='https://picsum.photos/seed/aseel-me/208/208'/>
+      <img class='profile-img' alt='صورتي' src='https://picsum.photos/seed/dahsha-me/208/208'/>
     </a>
     <div class='profile-name'>دهشة موثّقة</div>
     <div class='profile-textblock'>أكتب عن الكتب والمدن والحكايات الصغيرة التي تستحق أن تُروى.</div>
@@ -694,14 +711,14 @@ iframe.blogger-iframe-colorize{width:100%}
   <h2 class='widget-title'><span>الأكثر قراءة</span></h2>
   <div class='widget-content'>
     <div class='popular-item'>
-      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/aseel-p1/170/170' alt=''/></a>
+      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/dahsha-p1/170/170' alt=''/></a>
       <div class='item-content'>
         <h3 class='item-title'><a href='post.html'>حكاية الروائي الذي كره الحواشي</a></h3>
         <div class='item-meta'>١٢ أغسطس ٢٠٢٦</div>
       </div>
     </div>
     <div class='popular-item'>
-      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/aseel-p2/170/170' alt=''/></a>
+      <a class='item-thumbnail' href='post.html'><img loading='lazy' src='https://picsum.photos/seed/dahsha-p2/170/170' alt=''/></a>
       <div class='item-content'>
         <h3 class='item-title'><a href='post.html'>في مدح المكتبات القديمة</a></h3>
         <div class='item-meta'>٣ يوليو ٢٠٢٦</div>
@@ -780,7 +797,7 @@ iframe.blogger-iframe-colorize{width:100%}
   </div>
   <div class='footer-bottom'>
     <div class='container'>
-      <div class='footer-note'>دهشة موثّقة © <span class='aseel-year'>2026</span> — جميع الحقوق محفوظة</div>
+      <div class='footer-note'>دهشة موثّقة © <span class='dahsha-year'>2026</span> — جميع الحقوق محفوظة</div>
       <div class='widget Attribution'>
         <div class='widget-content'>
           <div class='blogger'><a href='#' rel='nofollow'>مدعوم بواسطة Blogger</a></div>
@@ -795,7 +812,7 @@ iframe.blogger-iframe-colorize{width:100%}
 </a>
 <script>
 (function(){
-  document.querySelectorAll('.aseel-year').forEach(function(e){e.textContent=new Date().getFullYear();});
+  document.querySelectorAll('.dahsha-year').forEach(function(e){e.textContent=new Date().getFullYear();});
   var t=document.querySelector('.to-top');
   if(t){var u=function(){window.scrollY>420?t.classList.remove('is-hidden'):t.classList.add('is-hidden');};
   window.addEventListener('scroll',u,{passive:true});u();}
