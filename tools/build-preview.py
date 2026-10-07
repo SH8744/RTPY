@@ -26,7 +26,20 @@ def build_css(xml):
     """يستخرج CSS من b:skin ويستبدل متغيّرات بلوجر $(name) بقيمها."""
     skin = re.search(r'<b:skin[^>]*><!\[CDATA\[(.*?)\]\]></b:skin>', xml, re.S).group(1)
     values = {}
-    for name, val in re.findall(r'<Variable\s+name="([^"]+)"[^>]*?value="([^"]*)"', skin):
+    raw = {}
+    for tag in re.findall(r'<Variable\b[^>]*/>', skin):
+        name = re.search(r'name="([^"]+)"', tag).group(1)
+        val = re.search(r'value="([^"]*)"', tag)
+        raw[name] = (val.group(1) if val else '', tag)
+    for name, (val, tag) in raw.items():
+        is_bg = 'type="background"' in tag
+        if is_bg:
+            color_attr = re.search(r'\scolor="([^"]*)"', tag)
+            if color_attr:
+                ref = color_attr.group(1)
+                if ref.startswith('$(') and ref.endswith(')'):
+                    ref = raw.get(ref[2:-1], ('', ''))[0]
+                val = val.replace('$(color)', ref)
         values[name] = val
 
     def font_parts(shorthand):
@@ -80,7 +93,10 @@ def build_css(xml):
         except Exception:
             return m.group(0)
 
-    return re.sub(r'\$\(([^()]*)\)', expr_sub, skin)
+    css = re.sub(r'\$\(([^()]*)\)', expr_sub, skin)
+    # $(color) داخل تعريف متغيّر الخلفية = لون ذلك المتغيّر
+    css = css.replace('$(color)', values.get('header.background.color', '#ffffff'))
+    return css
 
 
 HOME_BODY = """
@@ -506,14 +522,6 @@ def page(title, body_inner):
 """.format(title=title, CSS='__CSS__', body=body_inner)
 
 
-DEMO_CSS = '''
-/* ===== خلفية ترويسة تجريبية (للمعاينة فقط) ===== */
-.site-header{background-image:url('demo-header-raw.png');
-  background-position:center;background-repeat:no-repeat;background-size:cover;}
-.site-header::before{background-color:rgba(247,244,238,.84);}
-'''
-
-
 def main():
     xml = read(XML)
     css = build_css(xml)
@@ -539,9 +547,7 @@ def main():
     post_body = POST_BODY.replace('{SIDEBAR}', SIDEBAR)
     post = page('حكاية الروائي الذي كره الحواشي — دهشة موثّقة', post_body + FOOTER).replace('__CSS__', css)
 
-    pages = [('index.html', home), ('post.html', post),
-             ('index-demo.html', home.replace('</style>', DEMO_CSS + '</style>')),
-             ('post-demo.html', post.replace('</style>', DEMO_CSS + '</style>'))]
+    pages = [('index.html', home), ('post.html', post)]
     for name, html in pages:
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
             f.write(html)
