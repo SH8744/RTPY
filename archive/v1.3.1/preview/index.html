@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<title>حكاية الروائي الذي كره الحواشي — دهشة موثّقة</title>
+<title>دهشة موثّقة</title>
 <link href='https://fonts.googleapis.com' rel='preconnect'/>
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
 <link href='https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Almarai:wght@300;400;700;800&amp;display=swap' rel='stylesheet'/>
@@ -17,7 +17,7 @@
 
 =========================================================
   قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.3.2
+  الإصدار 1.1.0
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -27,16 +27,15 @@ Variable definitions
 
 <Variable name="keycolor" description="اللون الرئيسي" type="color" default="#9c7c48" value="#9c7c48"/>
 <Variable name="accent.dark.color" description="اللون الرئيسي الغامق" type="color" default="#7d6135" value="#7d6135"/>
-<Variable name="accent.light.color" description="اللون الذهبي الفاتح" type="color" default="#c9a86a" value="#c9a86a"/>
 <Variable name="body.background.color" description="لون خلفية الصفحة" type="color" default="#f7f4ee" value="#f7f4ee"/>
 <Variable name="posts.background.color" description="لون خلفية البطاقات" type="color" default="#ffffff" value="#ffffff"/>
 <Variable name="posts.title.color" description="لون العناوين" type="color" default="#1f1c19" value="#1f1c19"/>
 <Variable name="body.text.color" description="لون النص" type="color" default="#4a443c" value="#4a443c"/>
-<Variable name="muted.color" description="لون النص الثانوي" type="color" default="#6f695e" value="#6f695e"/>
+<Variable name="muted.color" description="لون النص الثانوي" type="color" default="#8c8578" value="#8c8578"/>
 <Variable name="border.color" description="لون الحدود والفواصل" type="color" default="#e8e1d5" value="#e8e1d5"/>
-<Variable name="body.link.color" description="لون الروابط" type="color" default="#84673a" value="#84673a"/>
+<Variable name="body.link.color" description="لون الروابط" type="color" default="#9c7c48" value="#9c7c48"/>
 <Variable name="body.link.hover.color" description="لون الروابط عند المرور" type="color" default="#7d6135" value="#7d6135"/>
-<Variable name="body.text.font" description="خط النص الأساسي" type="font" default="16px Almarai, Tahoma, sans-serif" value="16px Almarai, Tahoma, sans-serif"/>
+<Variable name="body.text.font" description="خط النص الأساسي" type="font" default="16px Almarai, sans-serif" value="16px Almarai, sans-serif"/>
 <Variable name="posts.title.font" description="خط عناوين المشاركات" type="font" default="700 34px Amiri, serif" value="700 34px Amiri, serif"/>
 <Variable name="blog.title.font" description="خط عنوان المدونة" type="font" default="700 40px Amiri, serif" value="700 40px Amiri, serif"/>
 <Variable name="widget.title.font" description="خط عناوين الأدوات" type="font" default="700 19px Amiri, serif" value="700 19px Amiri, serif"/>
@@ -59,8 +58,8 @@ body{
   margin:0;
   background-color:#f7f4ee;
   color:#4a443c;
-  font:16px Almarai, Tahoma, sans-serif;
-  font-family:Almarai, Tahoma, sans-serif;
+  font:16px Almarai, sans-serif;
+  font-family:Almarai, sans-serif;
   font-size:16px;
   line-height:1.9;
   min-height:100vh;
@@ -70,7 +69,7 @@ body{
 img{max-width:100%;height:auto;border:0;vertical-align:middle}
 img[src='']{visibility:hidden}
 svg{display:inline-block;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-a{color:#84673a;text-decoration:none;transition:color .2s ease}
+a{color:#9c7c48;text-decoration:none;transition:color .2s ease}
 a:hover,a:focus{color:#7d6135}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #9c7c48;outline-offset:2px}
 h1,h2,h3,h4,h5,h6{
@@ -99,9 +98,8 @@ code,kbd,pre,samp{font-family:Menlo,Consolas,"Courier New",monospace;direction:l
 code{background:rgba(0,0,0,.045);border-radius:3px;padding:.15em .45em;font-size:.9em}
 pre{background:#2b2b2b;color:#f2ede4;border-radius:4px;padding:18px 20px;overflow:auto;font-size:.92em;line-height:1.7}
 pre code{background:0 0;padding:0;color:inherit}
-.hidden,.invisible,.item-control,.quickedit,.widget-item-control{display:none}
-/* احتياطي: شريط بلوجر العلوي في المدوّنات القديمة (لا يظهر في القوالب الحديثة) */
-#navbar,#navbar-iframe{display:none}
+.hidden,.invisible,.item-control,.quickedit,.widget-item-control,.feed-links,.blog-feeds,#navbar,.navbar{display:none}
+.clearboth,.clear{clear:both}
 .status-msg-body,.status-msg-bg{display:none}
 
 /* رابط تجاوز المحتوى */
@@ -142,8 +140,8 @@ pre code{background:0 0;padding:0;color:inherit}
   color:#1f1c19;
 }
 .header-widget h1 a,.header-widget .site-title a{color:#1f1c19}
-.header-widget h1 a:hover,.header-widget .site-title a:hover{color:#84673a}
-.site-description{color:#6f695e;font-size:15px;letter-spacing:.04em;margin:12px auto 0;max-width:640px}
+.header-widget h1 a:hover,.header-widget .site-title a:hover{color:#9c7c48}
+.site-description{color:#8c8578;font-size:15px;letter-spacing:.04em;margin:12px auto 0;max-width:640px}
 .header-ornament{display:flex;align-items:center;justify-content:center;gap:12px;color:#9c7c48;margin-top:22px;opacity:.85}
 .header-ornament::before,.header-ornament::after{content:"";height:1px;width:64px;background:currentColor;opacity:.55}
 .header-behind{padding:56px 24px;border-radius:2px;background-position:center;background-size:cover;position:relative}
@@ -179,10 +177,8 @@ pre code{background:0 0;padding:0;color:inherit}
   border-bottom:2px solid transparent;color:#4a443c;display:block;
   font-size:14.5px;letter-spacing:.02em;padding:18px 15px
 }
-.site-nav li a:hover,.site-nav li.selected>a{color:#84673a;border-bottom-color:#9c7c48}
+.site-nav li a:hover,.site-nav li.selected>a,.site-nav li a.current-item{color:#9c7c48;border-bottom-color:#9c7c48}
 .site-nav .widget-title{display:none}
-.site-nav .section{align-items:center;display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:center}
-.site-nav .widget+.widget{border-inline-start:1px solid #e8e1d5;padding-inline-start:16px}
 /* البحث داخل .nav-inner: flex-basis:100% يجعله يأخذ سطرًا كاملًا بعرض الصفحة */
 .nav-search{
   align-items:center;background:#f7f4ee;border:1px solid #e8e1d5;
@@ -200,9 +196,9 @@ pre code{background:0 0;padding:0;color:inherit}
   background:0 0;border:0;color:#4a443c;flex:1 1 auto;font:inherit;font-size:15px;
   min-width:0;outline:0;padding:8px 16px;width:auto
 }
-.nav-search input::placeholder{color:#6f695e}
+.nav-search input::placeholder{color:#8c8578}
 .search-hint{
-  color:#6f695e;flex:0 0 auto;font-size:13px;letter-spacing:.02em;
+  color:#8c8578;flex:0 0 auto;font-size:12.5px;letter-spacing:.02em;
   opacity:.75;padding-inline-end:18px
 }
 
@@ -220,7 +216,7 @@ pre code{background:0 0;padding:0;color:inherit}
   border-inline-start:3px solid #9c7c48;display:flex;flex-wrap:wrap;gap:10px;
   justify-content:space-between;margin-bottom:32px;padding:16px 22px
 }
-.results-bar .results-text{color:#6f695e;font-size:15px}
+.results-bar .results-text{color:#8c8578;font-size:15px}
 .results-bar .results-text b,.results-bar .results-text .label{color:#1f1c19}
 .results-bar a{font-size:14px;letter-spacing:.02em}
 
@@ -239,28 +235,28 @@ pre code{background:0 0;padding:0;color:inherit}
 }
 .post-card:hover{box-shadow:0 22px 44px -30px rgba(31,28,25,.45);transform:translateY(-2px)}
 .post-card.no-thumb{grid-template-columns:minmax(0,1fr)}
-.post-card .post-thumb{background-color:#e8e1d5;display:block;overflow:hidden;position:relative}
+.post-card .post-thumb{display:block;overflow:hidden;position:relative}
 .post-card .post-thumb img{aspect-ratio:4/3;height:100%;object-fit:cover;transition:transform .5s ease;width:100%}
 .post-card:hover .post-thumb img{transform:scale(1.03)}
 .post-card .post-body-wrap{padding:30px 34px 32px}
 .post-labels{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 12px;padding:0}
 .post-labels a,.post-labels span{
-  color:#84673a;font-size:12.5px;letter-spacing:.1em
+  color:#9c7c48;font-size:12px;letter-spacing:.12em;text-transform:uppercase
 }
 .post-labels a:hover{color:#7d6135}
-.post-card .entry-title{font-size:27px;line-height:1.45;margin:0 0 12px;overflow-wrap:anywhere}
+.post-card .entry-title{font-size:27px;line-height:1.45;margin:0 0 12px}
 .post-card .entry-title a{color:#1f1c19}
-.post-card .entry-title a:hover{color:#84673a}
-.post-meta{color:#6f695e;display:flex;flex-wrap:wrap;font-size:14px;gap:6px 18px;margin-bottom:14px}
-.post-meta span,.post-meta a{align-items:center;color:#6f695e;display:inline-flex;gap:6px}
-.post-meta a:hover{color:#84673a}
+.post-card .entry-title a:hover{color:#9c7c48}
+.post-meta{color:#8c8578;display:flex;flex-wrap:wrap;font-size:13.5px;gap:6px 18px;margin-bottom:14px}
+.post-meta span,.post-meta a{align-items:center;color:#8c8578;display:inline-flex;gap:6px}
+.post-meta a:hover{color:#9c7c48}
 .post-meta svg{height:15px;width:15px;opacity:.8}
-.post-snippet{color:#4a443c;line-height:1.95;margin:0 0 18px;overflow-wrap:anywhere}
+.post-snippet{color:#4a443c;line-height:1.95;margin:0 0 18px}
 .post-snippet p{margin:0}
 .post-snippet{-webkit-box-orient:vertical;-webkit-line-clamp:3;display:-webkit-box;overflow:hidden}
 .read-more{
-  align-items:center;display:inline-flex;font-size:14px;font-weight:700;gap:8px;
-  letter-spacing:.04em;min-height:40px
+  align-items:center;display:inline-flex;font-size:13.5px;font-weight:700;gap:8px;
+  letter-spacing:.06em;text-transform:uppercase
 }
 .read-more::after{content:"\2190";font-size:15px;transition:transform .25s ease}
 .read-more:hover::after{transform:translateX(-4px)}
@@ -272,12 +268,12 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
    ============================================================ */
 .entry{background:#ffffff;border:1px solid #e8e1d5;padding:46px clamp(20px,4.6vw,58px) 40px}
 .entry-header{margin-bottom:26px;text-align:center}
-.entry-title{font:700 34px Amiri, serif;font-family:Amiri, serif;font-size:34px;margin:0 0 16px;overflow-wrap:anywhere}
+.entry-title{font:700 34px Amiri, serif;font-family:Amiri, serif;font-size:34px;margin:0 0 16px}
 .entry-header .post-meta{justify-content:center}
 .entry-header .post-labels{justify-content:center}
 .entry-divider{align-items:center;color:#9c7c48;display:flex;gap:12px;justify-content:center;margin:6px 0 26px;opacity:.8}
 .entry-divider::before,.entry-divider::after{content:"";height:1px;width:54px;background:currentColor;opacity:.55}
-.entry-content{font-size:17.0px;line-height:2.05;overflow-wrap:anywhere}
+.entry-content{font-size:17.0px;line-height:2.05;overflow-wrap:break-word}
 .entry-content p{margin-bottom:1.4em}
 .entry-content h2,.entry-content h3,.entry-content h4{margin:1.9em 0 .8em}
 .entry-content h2{font-size:1.62em;padding-bottom:.28em;position:relative}
@@ -292,24 +288,24 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .entry-content .separator{margin:1.6em 0}
 .entry-content .separator a{border:0}
 .entry-content iframe{max-width:100%}
-.entry-content .tr-caption,.entry-content figcaption{color:#6f695e;font-size:.86em;font-style:italic;text-align:center}
+.entry-content .tr-caption,.entry-content figcaption{color:#8c8578;font-size:.86em;font-style:italic;text-align:center}
 
 /* التسميات أسفل المشاركة */
 .entry-labels{align-items:center;display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
-.entry-labels .labels-title{color:#6f695e;font-size:13px;letter-spacing:.06em}
+.entry-labels .labels-title{color:#8c8578;font-size:13px;letter-spacing:.06em}
 .entry-labels a{
-  align-items:center;border:1px solid #e8e1d5;border-radius:999px;color:#4a443c;
-  display:inline-flex;font-size:13.5px;min-height:38px;padding:5px 16px;transition:all .2s ease
+  border:1px solid #e8e1d5;border-radius:999px;color:#4a443c;
+  font-size:13.5px;padding:5px 16px;transition:all .2s ease
 }
 .entry-labels a:hover{background:#9c7c48;border-color:#9c7c48;color:#fff}
 
 /* أزرار المشاركة */
 .share-box{border-bottom:1px solid #e8e1d5;border-top:1px solid #e8e1d5;margin-top:34px;padding:20px 0}
-.share-box .share-title{align-items:center;color:#6f695e;display:flex;font-size:13px;gap:8px;justify-content:center;letter-spacing:.08em;margin-bottom:14px}
+.share-box .share-title{align-items:center;color:#8c8578;display:flex;font-size:13px;gap:8px;justify-content:center;letter-spacing:.08em;margin-bottom:14px}
 .share-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;list-style:none;margin:0;padding:0}
 .share-list a{
-  align-items:center;border:1px solid #e8e1d5;border-radius:999px;color:#4a443c;
-  display:inline-flex;font-size:13.5px;min-height:38px;padding:5px 15px;transition:all .2s ease
+  border:1px solid #e8e1d5;border-radius:999px;color:#4a443c;
+  font-size:13px;padding:5px 15px;transition:all .2s ease
 }
 .share-list a:hover{background:#1f1c19;border-color:#1f1c19;color:#fff}
 
@@ -317,7 +313,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .author-box{align-items:center;background:rgba(0,0,0,.02);display:flex;gap:20px;margin-top:34px;padding:24px}
 .author-box img{border-radius:50%;height:76px;object-fit:cover;width:76px}
 .author-box .author-name{color:#1f1c19;font-family:Amiri, serif;font-size:19px;margin:0 0 4px}
-.author-box .author-about{color:#6f695e;font-size:14.5px;line-height:1.8;margin:0}
+.author-box .author-about{color:#8c8578;font-size:14.5px;line-height:1.8;margin:0}
 
 /* التنقل بين المشاركات */
 .post-pager{display:grid;gap:1px;grid-template-columns:1fr 1fr;margin-top:34px}
@@ -326,7 +322,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
   display:block;padding:20px 24px;transition:background .2s ease
 }
 .post-pager a:hover{background:#ffffff}
-.post-pager .pager-label{color:#6f695e;display:block;font-size:13px;letter-spacing:.08em;margin-bottom:6px}
+.post-pager .pager-label{color:#8c8578;display:block;font-size:12.5px;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
 .post-pager .pager-title{color:#1f1c19;font-family:Amiri, serif;font-size:17px;line-height:1.6}
 .post-pager .next{text-align:end}
 
@@ -341,7 +337,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 /* لا توجد مشاركات */
 .no-posts{background:#ffffff;border:1px solid #e8e1d5;padding:60px 30px;text-align:center}
 .no-posts h2{font-size:26px;margin-bottom:10px}
-.no-posts p{color:#6f695e;margin-bottom:22px}
+.no-posts p{color:#8c8578;margin-bottom:22px}
 
 /* ============================================================
    7) الأدوات (الشريط الجانبي وأي مكان آخر)
@@ -351,30 +347,30 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
   font:700 19px Amiri, serif;font-family:Amiri, serif;font-size:19px;
   letter-spacing:.02em;margin:0 0 22px;padding-bottom:16px;position:relative;text-align:center
 }
-.widget .widget-title::after{background:#9c7c48;bottom:0;content:"";height:2px;inset-inline-start:50%;position:absolute;transform:translateX(-50%);width:40px}
+.widget .widget-title::after{background:#9c7c48;bottom:0;content:"";height:2px;left:50%;position:absolute;transform:translateX(-50%);width:40px}
 .widget .widget-title span{color:#1f1c19}
 .widget ul{list-style:none;margin:0;padding:0}
 .widget li{margin-bottom:12px}
 .widget li:last-child{margin-bottom:0}
 .widget a{color:#4a443c}
-.widget a:hover{color:#84673a}
+.widget a:hover{color:#9c7c48}
 .widget img{max-width:100%}
 
 /* أدوات HTML/نص */
-.widget .widget-content{line-height:1.9;overflow-wrap:anywhere}
+.widget .widget-content{line-height:1.9;overflow-wrap:break-word}
 .widget .widget-content p:last-child{margin-bottom:0}
-.widget-empty{color:#6f695e;font-size:14px;margin:0;text-align:center}
+.widget-empty{color:#8c8578;font-size:14px;margin:0;text-align:center}
 
 /* الملف الشخصي */
 .widget.Profile{text-align:center}
 .widget.Profile .profile-img{border-radius:50%;height:104px;margin:0 auto 16px;object-fit:cover;width:104px}
 .widget.Profile .default-avatar-wrapper svg{color:#e8e1d5;height:104px;width:104px}
 .widget.Profile .profile-name{color:#1f1c19;font-family:Amiri, serif;font-size:20px;margin-bottom:8px}
-.widget.Profile .profile-textblock{color:#6f695e;font-size:14.5px;line-height:1.9;margin:0 0 16px}
-.widget.Profile .profile-data.location{color:#6f695e;font-size:13.5px;margin-bottom:10px}
+.widget.Profile .profile-textblock{color:#8c8578;font-size:14.5px;line-height:1.9;margin:0 0 16px}
+.widget.Profile .profile-data.location{color:#8c8578;font-size:13.5px;margin-bottom:10px}
 .widget.Profile .visit-profile{
-  align-items:center;border:1px solid #e8e1d5;border-radius:999px;color:#84673a;display:inline-flex;
-  font-size:13.5px;letter-spacing:.04em;min-height:38px;padding:6px 20px;transition:all .2s ease
+  border:1px solid #e8e1d5;border-radius:999px;color:#9c7c48;display:inline-block;
+  font-size:13px;letter-spacing:.04em;padding:6px 20px;transition:all .2s ease
 }
 .widget.Profile .visit-profile:hover{background:#9c7c48;border-color:#9c7c48;color:#fff}
 .widget.Profile .team-list li{align-items:center;display:flex;gap:14px;text-align:start}
@@ -383,12 +379,12 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 /* المشاركات الشائعة */
 .widget.PopularPosts .popular-item{display:flex;gap:16px;padding-bottom:18px}
 .widget.PopularPosts .popular-item+.popular-item{border-top:1px solid #e8e1d5;padding-top:18px}
-.widget.PopularPosts .item-thumbnail{background-color:#e8e1d5;flex:0 0 84px}
+.widget.PopularPosts .item-thumbnail{flex:0 0 84px}
 .widget.PopularPosts .item-thumbnail img{aspect-ratio:1/1;height:84px;object-fit:cover;width:84px}
-.widget.PopularPosts .item-title{font-family:Amiri, serif;font-size:16.5px;line-height:1.65;margin:0 0 6px;overflow-wrap:anywhere}
+.widget.PopularPosts .item-title{font-family:Amiri, serif;font-size:16.5px;line-height:1.65;margin:0 0 6px}
 .widget.PopularPosts .item-title a{color:#1f1c19}
-.widget.PopularPosts .item-title a:hover{color:#84673a}
-.widget.PopularPosts .item-meta{color:#6f695e;font-size:13px}
+.widget.PopularPosts .item-title a:hover{color:#9c7c48}
+.widget.PopularPosts .item-meta{color:#8c8578;font-size:12.5px}
 .widget.PopularPosts .item-number{
   color:#9c7c48;font-family:Amiri, serif;font-size:26px;flex:0 0 34px;line-height:1
 }
@@ -397,15 +393,13 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .widget.Label .label-list{display:flex;flex-wrap:wrap;gap:9px}
 .widget.Label .label-list li{margin:0}
 .widget.Label .label-list a{
-  align-items:center;border:1px solid #e8e1d5;border-radius:999px;display:inline-flex;
-  font-size:13.5px;min-height:36px;padding:4px 14px;transition:all .2s ease
+  border:1px solid #e8e1d5;border-radius:999px;display:inline-block;font-size:13.5px;padding:4px 14px;transition:all .2s ease
 }
 .widget.Label .label-list a:hover{background:#9c7c48;border-color:#9c7c48;color:#fff}
-.widget.Label .label-count{color:#6f695e;font-size:12px;margin-inline-start:6px}
+.widget.Label .label-count{color:#8c8578;font-size:12px;margin-inline-start:6px}
 .widget.Label .cloud-label-widget-content{display:flex;flex-wrap:wrap;gap:9px;line-height:1.6}
 .widget.Label .cloud-label-widget-content .label-size{
-  align-items:center;border:1px solid #e8e1d5;border-radius:999px;display:inline-flex;
-  min-height:36px;padding:4px 14px;transition:all .2s ease
+  border:1px solid #e8e1d5;border-radius:999px;padding:4px 14px;transition:all .2s ease
 }
 .widget.Label .cloud-label-widget-content .label-size:hover{background:#9c7c48;border-color:#9c7c48}
 .widget.Label .cloud-label-widget-content .label-size:hover a{color:#fff}
@@ -414,7 +408,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .widget.BlogArchive select{background:#ffffff;border:1px solid #e8e1d5;color:#4a443c;font:inherit;padding:8px 10px;width:100%}
 .widget.BlogArchive .archive-list li{align-items:center;display:flex;justify-content:space-between}
 .widget.BlogArchive .archive-list a{flex:1}
-.widget.BlogArchive .post-count{color:#6f695e;font-size:12.5px;margin-inline-start:8px}
+.widget.BlogArchive .post-count{color:#8c8578;font-size:12.5px;margin-inline-start:8px}
 .widget.BlogArchive details summary{cursor:pointer;list-style:none}
 .widget.BlogArchive details summary::-webkit-details-marker{display:none}
 .widget.BlogArchive .hierarchy{list-style:none;padding-inline-start:0}
@@ -460,11 +454,11 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 #comments .avatar-image-container img{border-radius:50%;height:42px;width:42px}
 #comments .avatar-icon{color:#e8e1d5;height:42px;width:42px}
 #comments .comment-author,#comments .comment-author a{color:#1f1c19;font-weight:700}
-#comments .datetime,#comments .comment-timestamp a{color:#6f695e;font-size:13px}
+#comments .datetime,#comments .comment-timestamp a{color:#8c8578;font-size:12.5px}
 #comments .comment-content{color:#4a443c;line-height:1.9}
 #comments .comment-content p:last-child{margin-bottom:0}
 #comments .comment-actions a,#comments .comment-reply{
-  color:#84673a;font-size:13.5px;letter-spacing:.02em
+  color:#9c7c48;font-size:13px;letter-spacing:.02em
 }
 #comments .comment-actions>*{margin-inline-end:12px}
 .comments .comments-content .loadmore{display:none}
@@ -475,7 +469,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .comment-footer{margin-top:26px}
 #comment-holder .continue{display:none}
 .blogger-iframe-colorize{margin-top:16px}
-.paging-control-container{color:#6f695e;font-size:14px;margin:18px 0;text-align:center}
+.paging-control-container{color:#8c8578;font-size:14px;margin:18px 0;text-align:center}
 .paging-control-container a{margin-inline-end:12px}
 
 /* ============================================================
@@ -483,12 +477,12 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
    ============================================================ */
 .site-footer{background:#23292f;color:#b8c0c7;margin-top:20px;padding-top:56px}
 .site-footer a{color:#ffffff}
-.site-footer a:hover{color:#c9a86a}
+.site-footer a:hover{color:#9c7c48}
 .footer-widgets{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));padding-bottom:44px}
 .site-footer .widget{background:0 0;border:0;margin:0;padding:0}
 .site-footer .widget .widget-title{color:#fff;text-align:start}
 .site-footer .widget .widget-title span{color:#fff}
-.site-footer .widget .widget-title::after{inset-inline-start:0;transform:none;background:#9c7c48}
+.site-footer .widget .widget-title::after{left:0;transform:none;background:#9c7c48}
 .site-footer .widget a{color:#ffffff}
 .site-footer .widget .label-list a,.site-footer .widget .cloud-label-widget-content .label-size{border-color:rgba(255,255,255,.22);color:#ffffff}
 .site-footer .widget .label-list a:hover,.site-footer .widget .cloud-label-widget-content .label-size:hover{background:#9c7c48;border-color:#9c7c48}
@@ -520,10 +514,12 @@ body.item-view .post-body a[imageanchor="1"]{margin:0 auto!important}
 .profile-image-link{display:inline-block}
 .comment-info{flex:1;min-width:0}
 .section,.widget{margin:0}
+.centered-bottom .widget{margin-bottom:30px}
+.disqus_thread{margin-top:30px}
 iframe.blogger-iframe-colorize{width:100%}
 #comment-editor-src{display:none}
+.post-body .jump-link{margin-top:10px}
 .screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;width:1px}
-#comments,.entry,.post-card{scroll-margin-top:150px}
 
 /* ============================================================
    11) الاستجابة (Responsive)
@@ -535,27 +531,18 @@ iframe.blogger-iframe-colorize{width:100%}
   .nav-inner{justify-content:space-between;min-height:56px;padding-inline:10px}
   .nav-toggle{display:flex}
   .nav-search{flex-basis:auto;flex-grow:1}
-  .site-nav .section{display:none}
-  .nav-toggle-checkbox{
-    clip-path:inset(50%);display:block;height:1px;opacity:0;overflow:hidden;position:absolute;width:1px
-  }
-  .nav-toggle-checkbox:focus-visible+.nav-toggle{outline:2px solid #9c7c48;outline-offset:2px}
+  .site-nav .widget,.site-nav .section{display:none}
   .nav-toggle-checkbox:checked~.section{
     background:#ffffff;border:1px solid #e8e1d5;
     display:block;flex:0 0 100%;margin-block:6px;order:3;padding-inline:14px
   }
-  .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:6px;width:100%}
+  .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:8px 14px;width:100%}
   .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid #e8e1d5;padding:13px 4px}
-  .nav-toggle-checkbox:checked~.section .widget+.widget{
-    border-inline-start:0;border-top:1px solid #e8e1d5;
-    margin-top:8px;padding-inline-start:0;padding-top:8px
-  }
   .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-menu{display:none}
 }
 @media (max-width:760px){
   .header-inner{padding-block:34px 28px}
-  .entry-content table{display:block;overflow-x:auto;width:100%}
   .post-card{grid-template-columns:minmax(0,1fr)}
   .post-card .post-thumb img{aspect-ratio:16/9}
   .post-card .post-body-wrap{padding:24px 22px 26px}
@@ -582,13 +569,6 @@ iframe.blogger-iframe-colorize{width:100%}
 /* ============================================================
    12) الطباعة
    ============================================================ */
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.001ms!important;animation-iteration-count:1!important;
-    scroll-behavior:auto!important;transition-duration:.001ms!important
-  }
-}
-
 @media print{
   .site-nav,.sidebar,.site-footer,.to-top,.share-box,.skip-link,.post-pager,.blog-pager{display:none!important}
   .layout-grid{display:block}
@@ -602,16 +582,18 @@ iframe.blogger-iframe-colorize{width:100%}
 <body>
 
 <a class='skip-link' href='#main'>تخطَّ إلى المحتوى</a>
+
 <header class='site-header' id='page-top'>
   <div class='container header-inner'>
     <div class='header-widget'>
-      <p class='site-title'><a href='index.html'>دهشة موثّقة</a></p>
+      <h1 class='site-title'><a href='index.html'>دهشة موثّقة</a></h1>
       <p class='site-description'>خواطر ومقالات في الأدب والفكر وتفاصيل الجمال اليومي</p>
       <div class='header-ornament'>
         <svg class='ornament-diamond' height='9' viewBox='0 0 10 10' width='9'><path d='M5 0 10 5 5 10 0 5z'/></svg>
       </div>
     </div>
   </div>
+
   <nav class='site-nav'>
     <div class='container nav-inner'>
       <input class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'/>
@@ -622,17 +604,11 @@ iframe.blogger-iframe-colorize{width:100%}
       <div class='nav-menu section'>
         <div class='widget PageList'><div class='widget-content'>
           <ul>
-            <li><a href='index.html'>الرئيسية</a></li>
-            <li class='selected'><a href='post.html'>مقالة مفردة</a></li>
-            <li><a href='empty.html'>حالة فارغة</a></li>
-          </ul>
-        </div></div>
-        <div class='widget LinkList'><div class='widget-content'>
-          <ul>
-            <li><a href='#'>الفضاء</a></li>
-            <li><a href='#'>الإنسان</a></li>
-            <li><a href='#'>الحيوان</a></li>
-            <li><a href='#'>غرائب الطبيعة</a></li>
+            <li class='selected'><a href='index.html'>الرئيسية</a></li>
+            <li><a href='#'>عن المدونة</a></li>
+            <li><a href='#'>مراجعات الكتب</a></li>
+            <li><a href='post.html'>مقالة مفردة</a></li>
+            <li><a href='#'>اتصل بنا</a></li>
           </ul>
         </div></div>
       </div>
@@ -650,146 +626,108 @@ iframe.blogger-iframe-colorize{width:100%}
 <div class='site-main'>
   <div class='container layout-grid'>
     <main class='content-area' id='main'>
-      <article class='entry'>
-        <div class='post-labels'><a href='#'>أدب</a><a href='#'>مراجعات</a></div>
-        <header class='entry-header'>
-          <h1 class='entry-title'>حكاية الروائي الذي كره الحواشي</h1>
-          <div class='post-meta'>
-            <span class='meta-author'>
-              <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
-              دهشة موثّقة
-            </span>
-            <span class='meta-date'>
-              <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
-              <time>١٢ أغسطس ٢٠٢٦</time>
-            </span>
-            <a class='meta-comments' href='#comments'>
-              <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
-              ٣ تعليقات
-            </a>
-          </div>
-          <div class='entry-divider'>
-            <svg class='ornament-diamond' height='9' viewBox='0 0 10 10' width='9'><path d='M5 0 10 5 5 10 0 5z'/></svg>
-          </div>
-        </header>
-        <div class='entry-content'>
-          <img alt='' src='https://picsum.photos/seed/dahsha-hero/1200/700'/>
-          <p>هناك روايات تُقرأ مرة واحدة، وهناك روايات تعود إليك في الحواشي؛ في تلك المساحة الصغيرة أسفل
-          الصفحة حيث يترك الكاتب صوتًا خفيًّا، همسًا لا يُقال في المتن. عن هذا الهمس كانت الحكاية.</p>
-          <h2>الحاشية كصوت ثانٍ</h2>
-          <p>كان يقول إن الحاشية ليست شرحًا، بل غرفة صغيرة يدخلها القارئ ليجد الكاتب جالسًا وحده، بلا قناع
-          السرد ولا سلطة العنوان. ثمة اعترافات لا تُكتب إلا هناك.</p>
-          <blockquote>«الكتاب الذي لا حاشية فيه كتابٌ صامت؛ يحدّثك ولا يبوح لك».</blockquote>
-          <h3>ثلاث ملاحظات على الهامش</h3>
-          <ul>
-            <li>الحاشية تمنح القارئ مساحة للمقاومة، لا للطاعة.</li>
-            <li>في الحاشية يتساوى المؤلف مع مترجمه.</li>
-            <li>أجمل الحواشي تلك التي تفتح سؤالًا وتغلق صفحة.</li>
-          </ul>
-          <p>ثم أضاف، وهو يقلّب كتابًا قديمًا: <a href='#'>اقرأ الحواشي أولًا</a>، فالمتن يصبر عليك،
-          أما الحاشية فقد لا تعود.</p>
-          <pre><code>// هكذا تبدو الحاشية في كتابٍ رقمي
-note = { page: 214, voice: "whisper" }</code></pre>
-          <table>
-            <thead><tr><th>الطبعة</th><th>السنة</th><th>عدد الصفحات</th></tr></thead>
-            <tbody>
-              <tr><td>الأولى</td><td>1987</td><td>312</td></tr>
-              <tr><td>الثانية</td><td>2004</td><td>348</td></tr>
-            </tbody>
-          </table>
-          <p>وبعد سنوات، وجدتُ نسختَه الشخصية في مكتبة مستعملة؛ الحواشي فيها بخطّه، والمتن بأيدٍ أخرى.
-          عند الصفحة 214 كان هناك وسم ذهبيّ صغير، وتحته سطر واحد: «هنا تبدأ الرواية الحقيقية».</p>
-          <h3>اختبار العرض: كلمة إنجليزية طويلة ورابط طويل</h3>
-          <p>كلمة طويلة: <strong>pneumonoultramicroscopicsilicovolcanoconiosis</strong>، ورابط طويل:
-          <a href='#'>https://example.com/a/very/long/path/segment/that/should/not/break/the/rtl/layout/at-any-width?with=query&amp;more=params</a>
-          — ويجب ألّا يتجاوز أيٌّ منهما حدود الصندوق على الجوال.</p>
-        </div>
+      <div class='post-feed'>
+        
+<article class='post-card'>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-a/800/600'/></a>
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>أدب</a><a href='#'>قراءات</a></div>
+    <h2 class='entry-title'><a href='post.html'>حكاية الروائي الذي كره الحواشي</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>١٢ أغسطس ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        ٣ تعليقات
+      </a>
+    </div>
+    <div class='post-snippet'><p>في المساحة الصغيرة أسفل الصفحة يترك الكاتب صوتًا خفيًّا، همسًا لا يُقال في المتن؛ عن هذا الهمس كانت الحكاية.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
 
-        <div class='entry-labels'>
-          <span class='labels-title'>التسميات:</span>
-          <a href='#'>أدب</a><a href='#'>مراجعات</a><a href='#'>قراءات</a>
-        </div>
+<article class='post-card'>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-b/800/600'/></a>
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>فنون</a></div>
+    <h2 class='entry-title'><a href='post.html'>في مدح المكتبات القديمة</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>٣ يوليو ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        تعليقان
+      </a>
+    </div>
+    <div class='post-snippet'><p>رائحة الورق القديم ليست تفصيلًا عابرًا، بل ذاكرة كاملة تفتح أبوابها كلما اقتربت من الرفّ الثالث.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
 
-        <div class='share-box'>
-          <div class='share-title'>شارك هذه المشاركة</div>
-          <ul class='share-list'>
-            <li><a href='#'>فيسبوك</a></li>
-            <li><a href='#'>إكس</a></li>
-            <li><a href='#'>واتساب</a></li>
-            <li><a href='#'>تيليجرام</a></li>
-            <li><a href='#'>بينترست</a></li>
-            <li><a href='#'>لينكدإن</a></li>
-            <li><a href='#'>البريد</a></li>
-          </ul>
-        </div>
+<article class='post-card'>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-c/800/600'/></a>
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>تاريخ</a></div>
+    <h2 class='entry-title'><a href='post.html'>عن الفهارس، وذاكرة الكتب</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>٢١ يونيو ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        أضف تعليقًا
+      </a>
+    </div>
+    <div class='post-snippet'><p>الفهرس هو الخريطة التي لا يكترث لها أحد، ومع ذلك بها يهتدي القارئ إلى ما لا يتوقّعه.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
 
-        <div class='author-box'>
-          <img alt='' src='https://picsum.photos/seed/dahsha-author/160/160'/>
-          <div class='author-info'>
-            <div class='author-name'>دهشة موثّقة</div>
-            <p class='author-about'>أكتب عن الكتب والمدن والحكايات الصغيرة التي تستحق أن تُروى، وأظلّ وفيًّا للحواشي.</p>
-          </div>
-        </div>
-      </article>
-
-      <nav class='post-pager'>
-        <a class='pager-newer' href='#'><span class='pager-label'>المشاركة السابقة</span>في مدح المكتبات القديمة</a>
-        <a class='next pager-older' href='#'><span class='pager-label'>المشاركة التالية</span>عن الفهارس، وذاكرة الكتب</a>
+<article class='post-card no-thumb'>
+  
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>خواطر</a></div>
+    <h2 class='entry-title'><a href='post.html'>رسالة قصيرة إلى من يقرأ في المقهى</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>٩ يونيو ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        ٥ تعليقات
+      </a>
+    </div>
+    <div class='post-snippet'><p>لا شيء أجمل من قارئ ينسى قهوته وهو يتقدّم في فصلٍ لم يخطّط له.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
+      </div>
+      <nav class='blog-pager'>
+        <a href='#'>رسائل أحدث</a>
+        <a href='#'>رسائل أقدم</a>
       </nav>
-
-      <section class='comments threaded' id='comments'>
-        <h3 class='comments-title'>التعليقات</h3>
-        <div class='comments-content'>
-          <div id='comment-holder'>
-            <div class='comment'>
-              <div class='comment-block'>
-                <div class='comment-header'>
-                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c1/84/84' alt=''/></div>
-                  <div class='comment-info'>
-                    <div class='comment-author'><a href='#'>سالم العتيبي</a> قال...</div>
-                    <span class='datetime'><a href='#'>١٣ أغسطس ٢٠٢٦، ٩:٤١ ص</a></span>
-                  </div>
-                </div>
-                <div class='comment-content'><p>«الحاشية غرفة صغيرة يدخلها القارئ» — هذه الجملة وحدها تستحق مقالًا. شكرًا لك.</p></div>
-              </div>
-              <div class='comment-replies'>
-                <div class='comment'>
-                  <div class='comment-block'>
-                    <div class='comment-header'>
-                      <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c2/84/84' alt=''/></div>
-                      <div class='comment-info'>
-                        <div class='comment-author'><a href='#'>دهشة موثّقة</a> قال...</div>
-                        <span class='datetime'><a href='#'>١٣ أغسطس ٢٠٢٦، ١١:٠٢ ص</a></span>
-                      </div>
-                    </div>
-                    <div class='comment-content'><p>شكرًا سالم، وسيبقى للهوامش نصيب من الكتابة القادمة.</p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class='comment'>
-              <div class='comment-block'>
-                <div class='comment-header'>
-                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c3/84/84' alt=''/></div>
-                  <div class='comment-info'>
-                    <div class='comment-author'><a href='#'>مريم</a> قالت...</div>
-                    <span class='datetime'><a href='#'>١٤ أغسطس ٢٠٢٦، ٧:١٥ م</a></span>
-                  </div>
-                </div>
-                <div class='comment-content'><p>قرأتها ثم عدت إلى روايتي القديمة أبحث عن حواشيها. فعلت بي شيئًا جميلًا.</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class='comment-footer'>
-          <div class='comment-form'>
-            <h4>أضف تعليقًا</h4>
-            <div class='blogger-iframe-colorize' style='border:1px dashed #e8e1d5;padding:32px;text-align:center;color:#8c8578'>
-              نموذج تعليقات بلوجر يظهر هنا (نظام التعليقات المتشابكة)
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
     <aside class='sidebar'>
       

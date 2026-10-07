@@ -125,16 +125,9 @@ HOME_BODY = """
           <ul>
             <li class='selected'><a href='index.html'>الرئيسية</a></li>
             <li><a href='#'>عن المدونة</a></li>
+            <li><a href='#'>مراجعات الكتب</a></li>
             <li><a href='post.html'>مقالة مفردة</a></li>
-            <li><a href='empty.html'>حالة فارغة</a></li>
-          </ul>
-        </div></div>
-        <div class='widget LinkList'><div class='widget-content'>
-          <ul>
-            <li><a href='#'>الفضاء</a></li>
-            <li><a href='#'>الإنسان</a></li>
-            <li><a href='#'>الحيوان</a></li>
-            <li><a href='#'>غرائب الطبيعة</a></li>
+            <li><a href='#'>اتصل بنا</a></li>
           </ul>
         </div></div>
       </div>
@@ -346,28 +339,14 @@ POST_BODY = """
   </div>
   <nav class='site-nav'>
     <div class='container nav-inner'>
-      <input class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'/>
-      <label class='nav-toggle' for='nav-toggle' title='القائمة'>
-        <svg class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
-        <svg class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
-      </label>
       <div class='nav-menu section'>
         <div class='widget PageList'><div class='widget-content'>
           <ul>
             <li><a href='index.html'>الرئيسية</a></li>
             <li class='selected'><a href='post.html'>مقالة مفردة</a></li>
-            <li><a href='empty.html'>حالة فارغة</a></li>
+            <li><a href='#'>عن المدونة</a></li>
           </ul>
         </div></div>
-        <div class='widget LinkList'><div class='widget-content'>
-          <ul>
-            <li><a href='#'>الفضاء</a></li>
-            <li><a href='#'>الإنسان</a></li>
-            <li><a href='#'>الحيوان</a></li>
-            <li><a href='#'>غرائب الطبيعة</a></li>
-          </ul>
-        </div></div>
-      </div>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
@@ -431,10 +410,6 @@ note = { page: 214, voice: "whisper" }</code></pre>
           </table>
           <p>وبعد سنوات، وجدتُ نسختَه الشخصية في مكتبة مستعملة؛ الحواشي فيها بخطّه، والمتن بأيدٍ أخرى.
           عند الصفحة 214 كان هناك وسم ذهبيّ صغير، وتحته سطر واحد: «هنا تبدأ الرواية الحقيقية».</p>
-          <h3>اختبار العرض: كلمة إنجليزية طويلة ورابط طويل</h3>
-          <p>كلمة طويلة: <strong>pneumonoultramicroscopicsilicovolcanoconiosis</strong>، ورابط طويل:
-          <a href='#'>https://example.com/a/very/long/path/segment/that/should/not/break/the/rtl/layout/at-any-width?with=query&amp;more=params</a>
-          — ويجب ألّا يتجاوز أيٌّ منهما حدود الصندوق على الجوال.</p>
         </div>
 
         <div class='entry-labels'>
@@ -513,14 +488,14 @@ note = { page: 214, voice: "whisper" }</code></pre>
             </div>
           </div>
         </div>
-        <div class='comment-footer'>
+        <p class='comment-footer'>
           <div class='comment-form'>
             <h4>أضف تعليقًا</h4>
             <div class='blogger-iframe-colorize' style='border:1px dashed #e8e1d5;padding:32px;text-align:center;color:#8c8578'>
               نموذج تعليقات بلوجر يظهر هنا (نظام التعليقات المتشابكة)
             </div>
           </div>
-        </div>
+        </p>
       </section>
     </main>
     <aside class='sidebar'>
@@ -551,15 +526,6 @@ def page(title, body_inner):
 """.format(title=title, CSS='__CSS__', body=body_inner)
 
 
-EMPTY_STATE = """
-<div class='no-posts'>
-  <h2>لا توجد مشاركات بعد</h2>
-  <p>لم تُنشر أي مشاركات على هذه المدونة حتى الآن. عُد قريبًا إن شاء الله.</p>
-  <a class='read-more' href='index.html'>الصفحة الرئيسية</a>
-</div>
-"""
-
-
 def main():
     xml = read(XML)
     css = build_css(xml)
@@ -585,10 +551,7 @@ def main():
     post_body = POST_BODY.replace('{SIDEBAR}', SIDEBAR)
     post = page('حكاية الروائي الذي كره الحواشي — دهشة موثّقة', post_body + FOOTER).replace('__CSS__', css)
 
-    empty_body = HOME_BODY.replace('{CARDS}', EMPTY_STATE).replace('{SIDEBAR}', SIDEBAR)
-    empty = page('لا توجد مشاركات — دهشة موثّقة', empty_body + FOOTER).replace('__CSS__', css)
-
-    pages = [('index.html', home), ('post.html', post), ('empty.html', empty)]
+    pages = [('index.html', home), ('post.html', post)]
     for name, html in pages:
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
             f.write(html)

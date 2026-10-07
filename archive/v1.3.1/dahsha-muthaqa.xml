@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='dahsha-muthaqa.xml' b:templateVersion='1.3.2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='dahsha-muthaqa.xml' b:templateVersion='1.1.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -22,7 +22,7 @@
 
 =========================================================
   قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.3.2
+  الإصدار 1.1.0
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -32,16 +32,15 @@ Variable definitions
 
 <Variable name="keycolor" description="اللون الرئيسي" type="color" default="#9c7c48" value="#9c7c48"/>
 <Variable name="accent.dark.color" description="اللون الرئيسي الغامق" type="color" default="#7d6135" value="#7d6135"/>
-<Variable name="accent.light.color" description="اللون الذهبي الفاتح" type="color" default="#c9a86a" value="#c9a86a"/>
 <Variable name="body.background.color" description="لون خلفية الصفحة" type="color" default="#f7f4ee" value="#f7f4ee"/>
 <Variable name="posts.background.color" description="لون خلفية البطاقات" type="color" default="#ffffff" value="#ffffff"/>
 <Variable name="posts.title.color" description="لون العناوين" type="color" default="#1f1c19" value="#1f1c19"/>
 <Variable name="body.text.color" description="لون النص" type="color" default="#4a443c" value="#4a443c"/>
-<Variable name="muted.color" description="لون النص الثانوي" type="color" default="#6f695e" value="#6f695e"/>
+<Variable name="muted.color" description="لون النص الثانوي" type="color" default="#8c8578" value="#8c8578"/>
 <Variable name="border.color" description="لون الحدود والفواصل" type="color" default="#e8e1d5" value="#e8e1d5"/>
-<Variable name="body.link.color" description="لون الروابط" type="color" default="#84673a" value="#84673a"/>
+<Variable name="body.link.color" description="لون الروابط" type="color" default="$(keycolor)" value="#9c7c48"/>
 <Variable name="body.link.hover.color" description="لون الروابط عند المرور" type="color" default="$(accent.dark.color)" value="#7d6135"/>
-<Variable name="body.text.font" description="خط النص الأساسي" type="font" default="16px Almarai, Tahoma, sans-serif" value="16px Almarai, Tahoma, sans-serif"/>
+<Variable name="body.text.font" description="خط النص الأساسي" type="font" default="16px Almarai, sans-serif" value="16px Almarai, sans-serif"/>
 <Variable name="posts.title.font" description="خط عناوين المشاركات" type="font" default="700 34px Amiri, serif" value="700 34px Amiri, serif"/>
 <Variable name="blog.title.font" description="خط عنوان المدونة" type="font" default="700 40px Amiri, serif" value="700 40px Amiri, serif"/>
 <Variable name="widget.title.font" description="خط عناوين الأدوات" type="font" default="700 19px Amiri, serif" value="700 19px Amiri, serif"/>
@@ -104,9 +103,8 @@ code,kbd,pre,samp{font-family:Menlo,Consolas,"Courier New",monospace;direction:l
 code{background:rgba(0,0,0,.045);border-radius:3px;padding:.15em .45em;font-size:.9em}
 pre{background:#2b2b2b;color:#f2ede4;border-radius:4px;padding:18px 20px;overflow:auto;font-size:.92em;line-height:1.7}
 pre code{background:0 0;padding:0;color:inherit}
-.hidden,.invisible,.item-control,.quickedit,.widget-item-control{display:none}
-/* احتياطي: شريط بلوجر العلوي في المدوّنات القديمة (لا يظهر في القوالب الحديثة) */
-#navbar,#navbar-iframe{display:none}
+.hidden,.invisible,.item-control,.quickedit,.widget-item-control,.feed-links,.blog-feeds,#navbar,.navbar{display:none}
+.clearboth,.clear{clear:both}
 .status-msg-body,.status-msg-bg{display:none}
 
 /* رابط تجاوز المحتوى */
@@ -147,7 +145,7 @@ pre code{background:0 0;padding:0;color:inherit}
   color:$(posts.title.color);
 }
 .header-widget h1 a,.header-widget .site-title a{color:$(posts.title.color)}
-.header-widget h1 a:hover,.header-widget .site-title a:hover{color:$(body.link.color)}
+.header-widget h1 a:hover,.header-widget .site-title a:hover{color:$(keycolor)}
 .site-description{color:$(muted.color);font-size:15px;letter-spacing:.04em;margin:12px auto 0;max-width:640px}
 .header-ornament{display:flex;align-items:center;justify-content:center;gap:12px;color:$(keycolor);margin-top:22px;opacity:.85}
 .header-ornament::before,.header-ornament::after{content:"";height:1px;width:64px;background:currentColor;opacity:.55}
@@ -184,10 +182,8 @@ pre code{background:0 0;padding:0;color:inherit}
   border-bottom:2px solid transparent;color:$(body.text.color);display:block;
   font-size:14.5px;letter-spacing:.02em;padding:18px 15px
 }
-.site-nav li a:hover,.site-nav li.selected>a{color:$(body.link.color);border-bottom-color:$(keycolor)}
+.site-nav li a:hover,.site-nav li.selected>a,.site-nav li a.current-item{color:$(keycolor);border-bottom-color:$(keycolor)}
 .site-nav .widget-title{display:none}
-.site-nav .section{align-items:center;display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:center}
-.site-nav .widget+.widget{border-inline-start:1px solid $(border.color);padding-inline-start:16px}
 /* البحث داخل .nav-inner: flex-basis:100% يجعله يأخذ سطرًا كاملًا بعرض الصفحة */
 .nav-search{
   align-items:center;background:$(body.background.color);border:1px solid $(border.color);
@@ -207,7 +203,7 @@ pre code{background:0 0;padding:0;color:inherit}
 }
 .nav-search input::placeholder{color:$(muted.color)}
 .search-hint{
-  color:$(muted.color);flex:0 0 auto;font-size:13px;letter-spacing:.02em;
+  color:$(muted.color);flex:0 0 auto;font-size:12.5px;letter-spacing:.02em;
   opacity:.75;padding-inline-end:18px
 }
 
@@ -244,28 +240,28 @@ pre code{background:0 0;padding:0;color:inherit}
 }
 .post-card:hover{box-shadow:0 22px 44px -30px rgba(31,28,25,.45);transform:translateY(-2px)}
 .post-card.no-thumb{grid-template-columns:minmax(0,1fr)}
-.post-card .post-thumb{background-color:$(border.color);display:block;overflow:hidden;position:relative}
+.post-card .post-thumb{display:block;overflow:hidden;position:relative}
 .post-card .post-thumb img{aspect-ratio:4/3;height:100%;object-fit:cover;transition:transform .5s ease;width:100%}
 .post-card:hover .post-thumb img{transform:scale(1.03)}
 .post-card .post-body-wrap{padding:30px 34px 32px}
 .post-labels{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 12px;padding:0}
 .post-labels a,.post-labels span{
-  color:$(body.link.color);font-size:12.5px;letter-spacing:.1em
+  color:$(keycolor);font-size:12px;letter-spacing:.12em;text-transform:uppercase
 }
 .post-labels a:hover{color:$(accent.dark.color)}
-.post-card .entry-title{font-size:27px;line-height:1.45;margin:0 0 12px;overflow-wrap:anywhere}
+.post-card .entry-title{font-size:27px;line-height:1.45;margin:0 0 12px}
 .post-card .entry-title a{color:$(posts.title.color)}
-.post-card .entry-title a:hover{color:$(body.link.color)}
-.post-meta{color:$(muted.color);display:flex;flex-wrap:wrap;font-size:14px;gap:6px 18px;margin-bottom:14px}
+.post-card .entry-title a:hover{color:$(keycolor)}
+.post-meta{color:$(muted.color);display:flex;flex-wrap:wrap;font-size:13.5px;gap:6px 18px;margin-bottom:14px}
 .post-meta span,.post-meta a{align-items:center;color:$(muted.color);display:inline-flex;gap:6px}
-.post-meta a:hover{color:$(body.link.color)}
+.post-meta a:hover{color:$(keycolor)}
 .post-meta svg{height:15px;width:15px;opacity:.8}
-.post-snippet{color:$(body.text.color);line-height:1.95;margin:0 0 18px;overflow-wrap:anywhere}
+.post-snippet{color:$(body.text.color);line-height:1.95;margin:0 0 18px}
 .post-snippet p{margin:0}
 .post-snippet{-webkit-box-orient:vertical;-webkit-line-clamp:3;display:-webkit-box;overflow:hidden}
 .read-more{
-  align-items:center;display:inline-flex;font-size:14px;font-weight:700;gap:8px;
-  letter-spacing:.04em;min-height:40px
+  align-items:center;display:inline-flex;font-size:13.5px;font-weight:700;gap:8px;
+  letter-spacing:.06em;text-transform:uppercase
 }
 .read-more::after{content:"\2190";font-size:15px;transition:transform .25s ease}
 .read-more:hover::after{transform:translateX(-4px)}
@@ -277,12 +273,12 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
    ============================================================ */
 .entry{background:$(posts.background.color);border:1px solid $(border.color);padding:46px clamp(20px,4.6vw,58px) 40px}
 .entry-header{margin-bottom:26px;text-align:center}
-.entry-title{font:$(posts.title.font);font-family:$(posts.title.font.family);font-size:$(posts.title.font.size);margin:0 0 16px;overflow-wrap:anywhere}
+.entry-title{font:$(posts.title.font);font-family:$(posts.title.font.family);font-size:$(posts.title.font.size);margin:0 0 16px}
 .entry-header .post-meta{justify-content:center}
 .entry-header .post-labels{justify-content:center}
 .entry-divider{align-items:center;color:$(keycolor);display:flex;gap:12px;justify-content:center;margin:6px 0 26px;opacity:.8}
 .entry-divider::before,.entry-divider::after{content:"";height:1px;width:54px;background:currentColor;opacity:.55}
-.entry-content{font-size:$(body.text.font.size * 1.0625);line-height:2.05;overflow-wrap:anywhere}
+.entry-content{font-size:$(body.text.font.size * 1.0625);line-height:2.05;overflow-wrap:break-word}
 .entry-content p{margin-bottom:1.4em}
 .entry-content h2,.entry-content h3,.entry-content h4{margin:1.9em 0 .8em}
 .entry-content h2{font-size:1.62em;padding-bottom:.28em;position:relative}
@@ -303,8 +299,8 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .entry-labels{align-items:center;display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
 .entry-labels .labels-title{color:$(muted.color);font-size:13px;letter-spacing:.06em}
 .entry-labels a{
-  align-items:center;border:1px solid $(border.color);border-radius:999px;color:$(body.text.color);
-  display:inline-flex;font-size:13.5px;min-height:38px;padding:5px 16px;transition:all .2s ease
+  border:1px solid $(border.color);border-radius:999px;color:$(body.text.color);
+  font-size:13.5px;padding:5px 16px;transition:all .2s ease
 }
 .entry-labels a:hover{background:$(keycolor);border-color:$(keycolor);color:#fff}
 
@@ -313,8 +309,8 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .share-box .share-title{align-items:center;color:$(muted.color);display:flex;font-size:13px;gap:8px;justify-content:center;letter-spacing:.08em;margin-bottom:14px}
 .share-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;list-style:none;margin:0;padding:0}
 .share-list a{
-  align-items:center;border:1px solid $(border.color);border-radius:999px;color:$(body.text.color);
-  display:inline-flex;font-size:13.5px;min-height:38px;padding:5px 15px;transition:all .2s ease
+  border:1px solid $(border.color);border-radius:999px;color:$(body.text.color);
+  font-size:13px;padding:5px 15px;transition:all .2s ease
 }
 .share-list a:hover{background:$(posts.title.color);border-color:$(posts.title.color);color:#fff}
 
@@ -331,7 +327,7 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
   display:block;padding:20px 24px;transition:background .2s ease
 }
 .post-pager a:hover{background:$(posts.background.color)}
-.post-pager .pager-label{color:$(muted.color);display:block;font-size:13px;letter-spacing:.08em;margin-bottom:6px}
+.post-pager .pager-label{color:$(muted.color);display:block;font-size:12.5px;letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
 .post-pager .pager-title{color:$(posts.title.color);font-family:$(posts.title.font.family);font-size:17px;line-height:1.6}
 .post-pager .next{text-align:end}
 
@@ -356,17 +352,17 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
   font:$(widget.title.font);font-family:$(widget.title.font.family);font-size:$(widget.title.font.size);
   letter-spacing:.02em;margin:0 0 22px;padding-bottom:16px;position:relative;text-align:center
 }
-.widget .widget-title::after{background:$(keycolor);bottom:0;content:"";height:2px;inset-inline-start:50%;position:absolute;transform:translateX(-50%);width:40px}
+.widget .widget-title::after{background:$(keycolor);bottom:0;content:"";height:2px;left:50%;position:absolute;transform:translateX(-50%);width:40px}
 .widget .widget-title span{color:$(posts.title.color)}
 .widget ul{list-style:none;margin:0;padding:0}
 .widget li{margin-bottom:12px}
 .widget li:last-child{margin-bottom:0}
 .widget a{color:$(body.text.color)}
-.widget a:hover{color:$(body.link.color)}
+.widget a:hover{color:$(keycolor)}
 .widget img{max-width:100%}
 
 /* أدوات HTML/نص */
-.widget .widget-content{line-height:1.9;overflow-wrap:anywhere}
+.widget .widget-content{line-height:1.9;overflow-wrap:break-word}
 .widget .widget-content p:last-child{margin-bottom:0}
 .widget-empty{color:$(muted.color);font-size:14px;margin:0;text-align:center}
 
@@ -378,8 +374,8 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .widget.Profile .profile-textblock{color:$(muted.color);font-size:14.5px;line-height:1.9;margin:0 0 16px}
 .widget.Profile .profile-data.location{color:$(muted.color);font-size:13.5px;margin-bottom:10px}
 .widget.Profile .visit-profile{
-  align-items:center;border:1px solid $(border.color);border-radius:999px;color:$(body.link.color);display:inline-flex;
-  font-size:13.5px;letter-spacing:.04em;min-height:38px;padding:6px 20px;transition:all .2s ease
+  border:1px solid $(border.color);border-radius:999px;color:$(keycolor);display:inline-block;
+  font-size:13px;letter-spacing:.04em;padding:6px 20px;transition:all .2s ease
 }
 .widget.Profile .visit-profile:hover{background:$(keycolor);border-color:$(keycolor);color:#fff}
 .widget.Profile .team-list li{align-items:center;display:flex;gap:14px;text-align:start}
@@ -388,12 +384,12 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 /* المشاركات الشائعة */
 .widget.PopularPosts .popular-item{display:flex;gap:16px;padding-bottom:18px}
 .widget.PopularPosts .popular-item+.popular-item{border-top:1px solid $(border.color);padding-top:18px}
-.widget.PopularPosts .item-thumbnail{background-color:$(border.color);flex:0 0 84px}
+.widget.PopularPosts .item-thumbnail{flex:0 0 84px}
 .widget.PopularPosts .item-thumbnail img{aspect-ratio:1/1;height:84px;object-fit:cover;width:84px}
-.widget.PopularPosts .item-title{font-family:$(posts.title.font.family);font-size:16.5px;line-height:1.65;margin:0 0 6px;overflow-wrap:anywhere}
+.widget.PopularPosts .item-title{font-family:$(posts.title.font.family);font-size:16.5px;line-height:1.65;margin:0 0 6px}
 .widget.PopularPosts .item-title a{color:$(posts.title.color)}
-.widget.PopularPosts .item-title a:hover{color:$(body.link.color)}
-.widget.PopularPosts .item-meta{color:$(muted.color);font-size:13px}
+.widget.PopularPosts .item-title a:hover{color:$(keycolor)}
+.widget.PopularPosts .item-meta{color:$(muted.color);font-size:12.5px}
 .widget.PopularPosts .item-number{
   color:$(keycolor);font-family:$(posts.title.font.family);font-size:26px;flex:0 0 34px;line-height:1
 }
@@ -402,15 +398,13 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 .widget.Label .label-list{display:flex;flex-wrap:wrap;gap:9px}
 .widget.Label .label-list li{margin:0}
 .widget.Label .label-list a{
-  align-items:center;border:1px solid $(border.color);border-radius:999px;display:inline-flex;
-  font-size:13.5px;min-height:36px;padding:4px 14px;transition:all .2s ease
+  border:1px solid $(border.color);border-radius:999px;display:inline-block;font-size:13.5px;padding:4px 14px;transition:all .2s ease
 }
 .widget.Label .label-list a:hover{background:$(keycolor);border-color:$(keycolor);color:#fff}
 .widget.Label .label-count{color:$(muted.color);font-size:12px;margin-inline-start:6px}
 .widget.Label .cloud-label-widget-content{display:flex;flex-wrap:wrap;gap:9px;line-height:1.6}
 .widget.Label .cloud-label-widget-content .label-size{
-  align-items:center;border:1px solid $(border.color);border-radius:999px;display:inline-flex;
-  min-height:36px;padding:4px 14px;transition:all .2s ease
+  border:1px solid $(border.color);border-radius:999px;padding:4px 14px;transition:all .2s ease
 }
 .widget.Label .cloud-label-widget-content .label-size:hover{background:$(keycolor);border-color:$(keycolor)}
 .widget.Label .cloud-label-widget-content .label-size:hover a{color:#fff}
@@ -465,11 +459,11 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
 #comments .avatar-image-container img{border-radius:50%;height:42px;width:42px}
 #comments .avatar-icon{color:$(border.color);height:42px;width:42px}
 #comments .comment-author,#comments .comment-author a{color:$(posts.title.color);font-weight:700}
-#comments .datetime,#comments .comment-timestamp a{color:$(muted.color);font-size:13px}
+#comments .datetime,#comments .comment-timestamp a{color:$(muted.color);font-size:12.5px}
 #comments .comment-content{color:$(body.text.color);line-height:1.9}
 #comments .comment-content p:last-child{margin-bottom:0}
 #comments .comment-actions a,#comments .comment-reply{
-  color:$(body.link.color);font-size:13.5px;letter-spacing:.02em
+  color:$(keycolor);font-size:13px;letter-spacing:.02em
 }
 #comments .comment-actions>*{margin-inline-end:12px}
 .comments .comments-content .loadmore{display:none}
@@ -488,12 +482,12 @@ html[dir=ltr] .read-more:hover::after{transform:translateX(4px)}
    ============================================================ */
 .site-footer{background:$(footer.background.color);color:$(footer.text.color);margin-top:20px;padding-top:56px}
 .site-footer a{color:$(footer.link.color)}
-.site-footer a:hover{color:$(accent.light.color)}
+.site-footer a:hover{color:$(keycolor)}
 .footer-widgets{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));padding-bottom:44px}
 .site-footer .widget{background:0 0;border:0;margin:0;padding:0}
 .site-footer .widget .widget-title{color:#fff;text-align:start}
 .site-footer .widget .widget-title span{color:#fff}
-.site-footer .widget .widget-title::after{inset-inline-start:0;transform:none;background:$(keycolor)}
+.site-footer .widget .widget-title::after{left:0;transform:none;background:$(keycolor)}
 .site-footer .widget a{color:$(footer.link.color)}
 .site-footer .widget .label-list a,.site-footer .widget .cloud-label-widget-content .label-size{border-color:rgba(255,255,255,.22);color:$(footer.link.color)}
 .site-footer .widget .label-list a:hover,.site-footer .widget .cloud-label-widget-content .label-size:hover{background:$(keycolor);border-color:$(keycolor)}
@@ -525,10 +519,12 @@ body.item-view .post-body a[imageanchor="1"]{margin:0 auto!important}
 .profile-image-link{display:inline-block}
 .comment-info{flex:1;min-width:0}
 .section,.widget{margin:0}
+.centered-bottom .widget{margin-bottom:30px}
+.disqus_thread{margin-top:30px}
 iframe.blogger-iframe-colorize{width:100%}
 #comment-editor-src{display:none}
+.post-body .jump-link{margin-top:10px}
 .screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);height:1px;overflow:hidden;position:absolute;width:1px}
-#comments,.entry,.post-card{scroll-margin-top:150px}
 
 /* ============================================================
    11) الاستجابة (Responsive)
@@ -540,27 +536,18 @@ iframe.blogger-iframe-colorize{width:100%}
   .nav-inner{justify-content:space-between;min-height:56px;padding-inline:10px}
   .nav-toggle{display:flex}
   .nav-search{flex-basis:auto;flex-grow:1}
-  .site-nav .section{display:none}
-  .nav-toggle-checkbox{
-    clip-path:inset(50%);display:block;height:1px;opacity:0;overflow:hidden;position:absolute;width:1px
-  }
-  .nav-toggle-checkbox:focus-visible+.nav-toggle{outline:2px solid $(keycolor);outline-offset:2px}
+  .site-nav .widget,.site-nav .section{display:none}
   .nav-toggle-checkbox:checked~.section{
     background:$(posts.background.color);border:1px solid $(border.color);
     display:block;flex:0 0 100%;margin-block:6px;order:3;padding-inline:14px
   }
-  .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:6px;width:100%}
+  .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:8px 14px;width:100%}
   .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid $(border.color);padding:13px 4px}
-  .nav-toggle-checkbox:checked~.section .widget+.widget{
-    border-inline-start:0;border-top:1px solid $(border.color);
-    margin-top:8px;padding-inline-start:0;padding-top:8px
-  }
   .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-menu{display:none}
 }
 @media (max-width:760px){
   .header-inner{padding-block:34px 28px}
-  .entry-content table{display:block;overflow-x:auto;width:100%}
   .post-card{grid-template-columns:minmax(0,1fr)}
   .post-card .post-thumb img{aspect-ratio:16/9}
   .post-card .post-body-wrap{padding:24px 22px 26px}
@@ -587,13 +574,6 @@ iframe.blogger-iframe-colorize{width:100%}
 /* ============================================================
    12) الطباعة
    ============================================================ */
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.001ms!important;animation-iteration-count:1!important;
-    scroll-behavior:auto!important;transition-duration:.001ms!important
-  }
-}
-
 @media print{
   .site-nav,.sidebar,.site-footer,.to-top,.share-box,.skip-link,.post-pager,.blog-pager{display:none!important}
   .layout-grid{display:block}
@@ -687,8 +667,13 @@ iframe.blogger-iframe-colorize{width:100%}
   </head>
 
   <body>
-    <b:comment>item-view يستخدمه CSS لإصلاحات صفحة المشاركة.</b:comment>
+    <b:class cond='data:view.isHomepage' name='home-view'/>
     <b:class cond='data:view.isSingleItem' name='item-view'/>
+    <b:class cond='data:view.isPage' name='page-view'/>
+    <b:class cond='data:view.isArchive' name='archive-view'/>
+    <b:class cond='data:view.isLabelSearch' name='label-view'/>
+    <b:class cond='data:view.isSearch and !data:view.isLabelSearch' name='search-view'/>
+    <b:class cond='data:view.isPreview' name='preview'/>
 
     <a class='skip-link' href='#main'>تخطَّ إلى المحتوى</a>
 
@@ -745,15 +730,15 @@ iframe.blogger-iframe-colorize{width:100%}
       </div>
 
       <!-- ===== شريط التنقل ===== -->
-      <nav aria-label='التنقل الرئيسي' class='site-nav' role='navigation'>
+      <nav class='site-nav' role='navigation'>
         <div class='container nav-inner'>
-          <input aria-label='إظهار قائمة التنقل أو إخفاؤها' class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'/>
+          <input class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'/>
           <label class='nav-toggle' for='nav-toggle' title='القائمة'>
-            <svg aria-hidden='true' class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
-            <svg aria-hidden='true' class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
+            <svg class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
+            <svg class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
           </label>
-          <b:section class='nav-menu' id='nav_menu' maxwidgets='3' name='قائمة التنقل' showaddelement='yes'>
-            <b:widget id='PageList1' locked='false' title='' type='PageList' version='2' visible='true'>
+          <b:section class='nav-menu' id='nav_menu' maxwidgets='1' name='قائمة التنقل' showaddelement='no'>
+            <b:widget id='PageList1' locked='true' title='' type='PageList' version='2' visible='true'>
               <b:widget-settings>
                 <!-- القيمة {} أي «قائمة صفحات فارغة» — يجب أن تكون JSON صالحًا،
                      وتركها فارغة يُسبب خطأ: The widget settings ... is not valid. Page title is invalid. -->
@@ -773,36 +758,11 @@ iframe.blogger-iframe-colorize{width:100%}
                 </div>
               </b:includable>
             </b:widget>
-            <b:comment>أقسام جاهزة (روابط تصفية بالتسميات) — عدّلها أو احذفها من: تخطيط ← أقسام المدونة</b:comment>
-            <b:widget id='LinkList1' locked='false' title='أقسام المدونة' type='LinkList' version='2' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                <b:widget-setting name='text-0'>الفضاء</b:widget-setting>
-                <b:widget-setting name='link-0'>/search/label/الفضاء</b:widget-setting>
-                <b:widget-setting name='text-1'>الإنسان</b:widget-setting>
-                <b:widget-setting name='link-1'>/search/label/الإنسان</b:widget-setting>
-                <b:widget-setting name='text-2'>الحيوان</b:widget-setting>
-                <b:widget-setting name='link-2'>/search/label/الحيوان</b:widget-setting>
-                <b:widget-setting name='text-3'>غرائب الطبيعة</b:widget-setting>
-                <b:widget-setting name='link-3'>/search/label/غرائب الطبيعة</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main' var='this'>
-                <div class='widget-content'>
-                  <ul>
-                    <b:loop values='data:links' var='link'>
-                      <li>
-                        <a expr:href='data:link.target'><data:link.name/></a>
-                      </li>
-                    </b:loop>
-                  </ul>
-                </div>
-              </b:includable>
-            </b:widget>
           </b:section>
           <!-- البحث: عنصر داخل شريط التنقل، وبفضل flex-basis:100% يأخذ سطرًا كاملًا بعرض الصفحة -->
           <form class='nav-search' expr:action='data:blog.searchUrl' method='get' role='search'>
             <button aria-label='ابحث' type='submit'>
-              <svg aria-hidden='true' height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
+              <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
             </button>
             <input aria-label='ابحث في هذه المدونة' autocomplete='off' expr:value='data:view.isSearch ? data:view.search.query.escaped : ""' name='q' placeholder='ابحث في المدونة...' type='search'/>
             <span class='search-hint'>اضغط Enter للبحث</span>
@@ -1299,13 +1259,13 @@ iframe.blogger-iframe-colorize{width:100%}
                     </div>
                   </div>
 
-                  <div class='comment-footer'>
+                  <p class='comment-footer'>
                     <b:if cond='data:post.allowNewComments'>
                       <b:include data='post' name='threadedCommentForm'/>
                     <b:else/>
                       <data:post.noNewCommentsText/>
                     </b:if>
-                  </div>
+                  </p>
 
                   <b:if cond='data:showCmtPopup'>
                     <div id='comment-popup'>
@@ -1322,7 +1282,7 @@ iframe.blogger-iframe-colorize{width:100%}
         <aside class='sidebar' id='sidebar' role='complementary'>
           <b:section class='sidebar-widgets' id='sidebar_main' name='الشريط الجانبي' preferred='yes'>
 
-            <b:widget id='Profile1' locked='false' title='من أنا' type='Profile' visible='true'>
+            <b:widget id='Profile1' locked='true' title='من أنا' type='Profile' visible='true'>
               <b:widget-settings>
                 <b:widget-setting name='showaboutme'>true</b:widget-setting>
                 <b:widget-setting name='showlocation'>false</b:widget-setting>
