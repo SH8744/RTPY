@@ -315,6 +315,10 @@ FOOTER = """
   var t=document.querySelector('.to-top');
   if(t){var u=function(){window.scrollY>420?t.classList.remove('is-hidden'):t.classList.add('is-hidden');};
   window.addEventListener('scroll',u,{passive:true});u();}
+  var nav=document.querySelector('.site-nav');
+  if(nav){var n=function(){var stuck=nav.getBoundingClientRect().top<=0&&window.scrollY>4;
+    stuck?nav.classList.add('is-stuck'):nav.classList.remove('is-stuck');};
+    window.addEventListener('scroll',n,{passive:true});window.addEventListener('resize',n);n();}
 })();
 </script>
 </body>

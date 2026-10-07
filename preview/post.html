@@ -154,10 +154,17 @@ pre code{background:0 0;padding:0;color:inherit}
    3) شريط التنقل
    ============================================================ */
 .site-nav{
+  /* شريط التنقل شفاف ليظهر خلفه صورة الترويسة */
+  background:transparent;
+  border-bottom:1px solid transparent;
+  position:sticky;top:0;z-index:80;
+  transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease
+}
+/* عند تمرير الصفحة ووصول الشريط أعلى الشاشة يصبح معتمًا ليظهر فوق المحتوى بوضوح */
+.site-nav.is-stuck{
   background:#ffffff;
-  border-bottom:1px solid #e8e1d5;
-  box-shadow:0 6px 18px -14px rgba(0,0,0,.35);
-  position:sticky;top:0;z-index:80
+  border-bottom-color:#e8e1d5;
+  box-shadow:0 6px 18px -14px rgba(0,0,0,.35)
 }
 .nav-inner{
   align-items:center;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;
@@ -525,7 +532,10 @@ iframe.blogger-iframe-colorize{width:100%}
   .nav-toggle{display:flex}
   .nav-search{flex-basis:auto;flex-grow:1}
   .site-nav .widget,.site-nav .section{display:none}
-  .nav-toggle-checkbox:checked~.section{display:block;flex:0 0 100%;order:3}
+  .nav-toggle-checkbox:checked~.section{
+    background:#ffffff;border:1px solid #e8e1d5;
+    display:block;flex:0 0 100%;margin-block:6px;order:3;padding-inline:14px
+  }
   .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:8px 14px;width:100%}
   .nav-toggle-checkbox:checked~.section li a{border-bottom:1px solid #e8e1d5;padding:13px 4px}
   .nav-toggle-checkbox:checked~.nav-toggle .icon-close{display:inline-block}
@@ -866,6 +876,10 @@ note = { page: 214, voice: "whisper" }</code></pre>
   var t=document.querySelector('.to-top');
   if(t){var u=function(){window.scrollY>420?t.classList.remove('is-hidden'):t.classList.add('is-hidden');};
   window.addEventListener('scroll',u,{passive:true});u();}
+  var nav=document.querySelector('.site-nav');
+  if(nav){var n=function(){var stuck=nav.getBoundingClientRect().top<=0&&window.scrollY>4;
+    stuck?nav.classList.add('is-stuck'):nav.classList.remove('is-stuck');};
+    window.addEventListener('scroll',n,{passive:true});window.addEventListener('resize',n);n();}
 })();
 </script>
 </body>
