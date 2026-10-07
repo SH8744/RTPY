@@ -42,6 +42,9 @@ Variable definitions
 <Variable name="footer.background.color" description="خلفية التذييل" type="color" default="#23292f" value="#23292f"/>
 <Variable name="footer.text.color" description="نص التذييل" type="color" default="#b8c0c7" value="#b8c0c7"/>
 <Variable name="footer.link.color" description="روابط التذييل" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="header.background.color" description="لون خلفية الترويسة (يُستخدم إن لم تُحدَّد صورة)" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="header.background" description="خلفية الترويسة: ارفع صورة من هنا (اختياري)" type="background" color="#ffffff" default="$(color) none repeat scroll top left" value="$(color) none repeat scroll top left"/>
+<Variable name="header.overlay.color" description="طبقة شبه شفافة فوق صورة الترويسة (اضبط الشفافية في قيمة rgba — اجعلها 0 لتعطيلها)" type="color" default="rgba(247, 244, 238, 0)" value="rgba(247, 244, 238, 0)"/>
 <Variable name="layout.width" description="أقصى عرض للتخطيط" type="length" min="900px" max="1700px" default="1180px" value="1180px"/>
 <Variable name="sidebar.width" description="عرض الشريط الجانبي" type="length" min="200px" max="480px" default="320px" value="320px"/>
 */
@@ -111,7 +114,20 @@ pre code{background:0 0;padding:0;color:inherit}
 /* ============================================================
    2) الترويسة
    ============================================================ */
-.site-header{background:#ffffff;border-bottom:1px solid #e8e1d5;position:relative;z-index:60}
+.site-header{
+  background:$(color) none repeat scroll top left;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  border-bottom:1px solid #e8e1d5;
+  position:relative;z-index:60
+}
+/* طبقة شبه شفافة فوق صورة الترويسة: لا تُظهر شيئًا ما لم تُضبط قيمة rgba */
+.site-header::before{
+  background-color:rgba(247, 244, 238, 0);
+  content:"";inset:0;pointer-events:none;position:absolute;z-index:0
+}
+.site-header>.header-inner,.site-header>.site-nav{position:relative;z-index:1}
 .header-inner{padding-block:46px 38px;text-align:center}
 .header-logo{display:inline-block;max-width:420px}
 .header-logo img{margin-inline:auto;max-height:130px;width:auto}

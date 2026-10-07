@@ -506,6 +506,14 @@ def page(title, body_inner):
 """.format(title=title, CSS='__CSS__', body=body_inner)
 
 
+DEMO_CSS = '''
+/* ===== خلفية ترويسة تجريبية (للمعاينة فقط) ===== */
+.site-header{background-image:url('demo-header-raw.png');
+  background-position:center;background-repeat:no-repeat;background-size:cover;}
+.site-header::before{background-color:rgba(247,244,238,.84);}
+'''
+
+
 def main():
     xml = read(XML)
     css = build_css(xml)
@@ -531,7 +539,10 @@ def main():
     post_body = POST_BODY.replace('{SIDEBAR}', SIDEBAR)
     post = page('حكاية الروائي الذي كره الحواشي — دهشة موثّقة', post_body + FOOTER).replace('__CSS__', css)
 
-    for name, html in (('index.html', home), ('post.html', post)):
+    pages = [('index.html', home), ('post.html', post),
+             ('index-demo.html', home.replace('</style>', DEMO_CSS + '</style>')),
+             ('post-demo.html', post.replace('</style>', DEMO_CSS + '</style>'))]
+    for name, html in pages:
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
             f.write(html)
         print('wrote', os.path.join('preview', name), len(html), 'bytes')

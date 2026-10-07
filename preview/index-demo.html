@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<title>حكاية الروائي الذي كره الحواشي — دهشة موثّقة</title>
+<title>دهشة موثّقة</title>
 <link href='https://fonts.googleapis.com' rel='preconnect'/>
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
 <link href='https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Almarai:wght@300;400;700;800&amp;display=swap' rel='stylesheet'/>
@@ -567,31 +567,46 @@ iframe.blogger-iframe-colorize{width:100%}
   a{color:#000;text-decoration:underline}
 }
 
+
+/* ===== خلفية ترويسة تجريبية (للمعاينة فقط) ===== */
+.site-header{background-image:url('demo-header-raw.png');
+  background-position:center;background-repeat:no-repeat;background-size:cover;}
+.site-header::before{background-color:rgba(247,244,238,.84);}
 </style>
 </head>
 <body>
 
 <a class='skip-link' href='#main'>تخطَّ إلى المحتوى</a>
+
 <header class='site-header' id='page-top'>
   <div class='container header-inner'>
     <div class='header-widget'>
-      <p class='site-title'><a href='index.html'>دهشة موثّقة</a></p>
+      <h1 class='site-title'><a href='index.html'>دهشة موثّقة</a></h1>
       <p class='site-description'>خواطر ومقالات في الأدب والفكر وتفاصيل الجمال اليومي</p>
       <div class='header-ornament'>
         <svg class='ornament-diamond' height='9' viewBox='0 0 10 10' width='9'><path d='M5 0 10 5 5 10 0 5z'/></svg>
       </div>
     </div>
   </div>
+
   <nav class='site-nav'>
     <div class='container nav-inner'>
+      <input class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'/>
+      <label class='nav-toggle' for='nav-toggle' title='القائمة'>
+        <svg class='icon-menu' height='22' viewBox='0 0 24 24' width='22'><path d='M3 6h18M3 12h18M3 18h18'/></svg>
+        <svg class='icon-close' height='22' viewBox='0 0 24 24' width='22'><path d='M6 6l12 12M18 6L6 18'/></svg>
+      </label>
       <div class='nav-menu section'>
         <div class='widget PageList'><div class='widget-content'>
           <ul>
-            <li><a href='index.html'>الرئيسية</a></li>
-            <li class='selected'><a href='post.html'>مقالة مفردة</a></li>
+            <li class='selected'><a href='index.html'>الرئيسية</a></li>
             <li><a href='#'>عن المدونة</a></li>
+            <li><a href='#'>مراجعات الكتب</a></li>
+            <li><a href='post.html'>مقالة مفردة</a></li>
+            <li><a href='#'>اتصل بنا</a></li>
           </ul>
         </div></div>
+      </div>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
@@ -606,142 +621,108 @@ iframe.blogger-iframe-colorize{width:100%}
 <div class='site-main'>
   <div class='container layout-grid'>
     <main class='content-area' id='main'>
-      <article class='entry'>
-        <div class='post-labels'><a href='#'>أدب</a><a href='#'>مراجعات</a></div>
-        <header class='entry-header'>
-          <h1 class='entry-title'>حكاية الروائي الذي كره الحواشي</h1>
-          <div class='post-meta'>
-            <span class='meta-author'>
-              <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
-              دهشة موثّقة
-            </span>
-            <span class='meta-date'>
-              <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
-              <time>١٢ أغسطس ٢٠٢٦</time>
-            </span>
-            <a class='meta-comments' href='#comments'>
-              <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
-              ٣ تعليقات
-            </a>
-          </div>
-          <div class='entry-divider'>
-            <svg class='ornament-diamond' height='9' viewBox='0 0 10 10' width='9'><path d='M5 0 10 5 5 10 0 5z'/></svg>
-          </div>
-        </header>
-        <div class='entry-content'>
-          <img alt='' src='https://picsum.photos/seed/dahsha-hero/1200/700'/>
-          <p>هناك روايات تُقرأ مرة واحدة، وهناك روايات تعود إليك في الحواشي؛ في تلك المساحة الصغيرة أسفل
-          الصفحة حيث يترك الكاتب صوتًا خفيًّا، همسًا لا يُقال في المتن. عن هذا الهمس كانت الحكاية.</p>
-          <h2>الحاشية كصوت ثانٍ</h2>
-          <p>كان يقول إن الحاشية ليست شرحًا، بل غرفة صغيرة يدخلها القارئ ليجد الكاتب جالسًا وحده، بلا قناع
-          السرد ولا سلطة العنوان. ثمة اعترافات لا تُكتب إلا هناك.</p>
-          <blockquote>«الكتاب الذي لا حاشية فيه كتابٌ صامت؛ يحدّثك ولا يبوح لك».</blockquote>
-          <h3>ثلاث ملاحظات على الهامش</h3>
-          <ul>
-            <li>الحاشية تمنح القارئ مساحة للمقاومة، لا للطاعة.</li>
-            <li>في الحاشية يتساوى المؤلف مع مترجمه.</li>
-            <li>أجمل الحواشي تلك التي تفتح سؤالًا وتغلق صفحة.</li>
-          </ul>
-          <p>ثم أضاف، وهو يقلّب كتابًا قديمًا: <a href='#'>اقرأ الحواشي أولًا</a>، فالمتن يصبر عليك،
-          أما الحاشية فقد لا تعود.</p>
-          <pre><code>// هكذا تبدو الحاشية في كتابٍ رقمي
-note = { page: 214, voice: "whisper" }</code></pre>
-          <table>
-            <thead><tr><th>الطبعة</th><th>السنة</th><th>عدد الصفحات</th></tr></thead>
-            <tbody>
-              <tr><td>الأولى</td><td>1987</td><td>312</td></tr>
-              <tr><td>الثانية</td><td>2004</td><td>348</td></tr>
-            </tbody>
-          </table>
-          <p>وبعد سنوات، وجدتُ نسختَه الشخصية في مكتبة مستعملة؛ الحواشي فيها بخطّه، والمتن بأيدٍ أخرى.
-          عند الصفحة 214 كان هناك وسم ذهبيّ صغير، وتحته سطر واحد: «هنا تبدأ الرواية الحقيقية».</p>
-        </div>
+      <div class='post-feed'>
+        
+<article class='post-card'>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-a/800/600'/></a>
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>أدب</a><a href='#'>قراءات</a></div>
+    <h2 class='entry-title'><a href='post.html'>حكاية الروائي الذي كره الحواشي</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>١٢ أغسطس ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        ٣ تعليقات
+      </a>
+    </div>
+    <div class='post-snippet'><p>في المساحة الصغيرة أسفل الصفحة يترك الكاتب صوتًا خفيًّا، همسًا لا يُقال في المتن؛ عن هذا الهمس كانت الحكاية.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
 
-        <div class='entry-labels'>
-          <span class='labels-title'>التسميات:</span>
-          <a href='#'>أدب</a><a href='#'>مراجعات</a><a href='#'>قراءات</a>
-        </div>
+<article class='post-card'>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-b/800/600'/></a>
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>فنون</a></div>
+    <h2 class='entry-title'><a href='post.html'>في مدح المكتبات القديمة</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>٣ يوليو ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        تعليقان
+      </a>
+    </div>
+    <div class='post-snippet'><p>رائحة الورق القديم ليست تفصيلًا عابرًا، بل ذاكرة كاملة تفتح أبوابها كلما اقتربت من الرفّ الثالث.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
 
-        <div class='share-box'>
-          <div class='share-title'>شارك هذه المشاركة</div>
-          <ul class='share-list'>
-            <li><a href='#'>فيسبوك</a></li>
-            <li><a href='#'>إكس</a></li>
-            <li><a href='#'>واتساب</a></li>
-            <li><a href='#'>تيليجرام</a></li>
-            <li><a href='#'>بينترست</a></li>
-            <li><a href='#'>لينكدإن</a></li>
-            <li><a href='#'>البريد</a></li>
-          </ul>
-        </div>
+<article class='post-card'>
+  <a class='post-thumb' href='post.html'><img alt='' loading='lazy' src='https://picsum.photos/seed/dahsha-c/800/600'/></a>
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>تاريخ</a></div>
+    <h2 class='entry-title'><a href='post.html'>عن الفهارس، وذاكرة الكتب</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>٢١ يونيو ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        أضف تعليقًا
+      </a>
+    </div>
+    <div class='post-snippet'><p>الفهرس هو الخريطة التي لا يكترث لها أحد، ومع ذلك بها يهتدي القارئ إلى ما لا يتوقّعه.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
 
-        <div class='author-box'>
-          <img alt='' src='https://picsum.photos/seed/dahsha-author/160/160'/>
-          <div class='author-info'>
-            <div class='author-name'>دهشة موثّقة</div>
-            <p class='author-about'>أكتب عن الكتب والمدن والحكايات الصغيرة التي تستحق أن تُروى، وأظلّ وفيًّا للحواشي.</p>
-          </div>
-        </div>
-      </article>
-
-      <nav class='post-pager'>
-        <a class='pager-newer' href='#'><span class='pager-label'>المشاركة السابقة</span>في مدح المكتبات القديمة</a>
-        <a class='next pager-older' href='#'><span class='pager-label'>المشاركة التالية</span>عن الفهارس، وذاكرة الكتب</a>
+<article class='post-card no-thumb'>
+  
+  <div class='post-body-wrap'>
+    <div class='post-labels'><a href='#'>خواطر</a></div>
+    <h2 class='entry-title'><a href='post.html'>رسالة قصيرة إلى من يقرأ في المقهى</a></h2>
+    <div class='post-meta'>
+      <span class='meta-author'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6.4 8-6.4s8 2.4 8 6.4'/></svg>
+        دهشة موثّقة
+      </span>
+      <span class='meta-date'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><circle cx='12' cy='12' r='9'/><path d='M12 7v5.2l3 2'/></svg>
+        <time>٩ يونيو ٢٠٢٦</time>
+      </span>
+      <a class='meta-comments' href='post.html#comments'>
+        <svg height='15' viewBox='0 0 24 24' width='15'><path d='M21 12a8 8 0 0 1-8 8H7l-4 3v-5.2A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z'/></svg>
+        ٥ تعليقات
+      </a>
+    </div>
+    <div class='post-snippet'><p>لا شيء أجمل من قارئ ينسى قهوته وهو يتقدّم في فصلٍ لم يخطّط له.</p></div>
+    <a class='read-more' href='post.html'>اقرأ المزيد</a>
+  </div>
+</article>
+      </div>
+      <nav class='blog-pager'>
+        <a href='#'>رسائل أحدث</a>
+        <a href='#'>رسائل أقدم</a>
       </nav>
-
-      <section class='comments threaded' id='comments'>
-        <h3 class='comments-title'>التعليقات</h3>
-        <div class='comments-content'>
-          <div id='comment-holder'>
-            <div class='comment'>
-              <div class='comment-block'>
-                <div class='comment-header'>
-                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c1/84/84' alt=''/></div>
-                  <div class='comment-info'>
-                    <div class='comment-author'><a href='#'>سالم العتيبي</a> قال...</div>
-                    <span class='datetime'><a href='#'>١٣ أغسطس ٢٠٢٦، ٩:٤١ ص</a></span>
-                  </div>
-                </div>
-                <div class='comment-content'><p>«الحاشية غرفة صغيرة يدخلها القارئ» — هذه الجملة وحدها تستحق مقالًا. شكرًا لك.</p></div>
-              </div>
-              <div class='comment-replies'>
-                <div class='comment'>
-                  <div class='comment-block'>
-                    <div class='comment-header'>
-                      <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c2/84/84' alt=''/></div>
-                      <div class='comment-info'>
-                        <div class='comment-author'><a href='#'>دهشة موثّقة</a> قال...</div>
-                        <span class='datetime'><a href='#'>١٣ أغسطس ٢٠٢٦، ١١:٠٢ ص</a></span>
-                      </div>
-                    </div>
-                    <div class='comment-content'><p>شكرًا سالم، وسيبقى للهوامش نصيب من الكتابة القادمة.</p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class='comment'>
-              <div class='comment-block'>
-                <div class='comment-header'>
-                  <div class='avatar-image-container'><img class='author-avatar' src='https://picsum.photos/seed/dahsha-c3/84/84' alt=''/></div>
-                  <div class='comment-info'>
-                    <div class='comment-author'><a href='#'>مريم</a> قالت...</div>
-                    <span class='datetime'><a href='#'>١٤ أغسطس ٢٠٢٦، ٧:١٥ م</a></span>
-                  </div>
-                </div>
-                <div class='comment-content'><p>قرأتها ثم عدت إلى روايتي القديمة أبحث عن حواشيها. فعلت بي شيئًا جميلًا.</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class='comment-footer'>
-          <div class='comment-form'>
-            <h4>أضف تعليقًا</h4>
-            <div class='blogger-iframe-colorize' style='border:1px dashed #e8e1d5;padding:32px;text-align:center;color:#8c8578'>
-              نموذج تعليقات بلوجر يظهر هنا (نظام التعليقات المتشابكة)
-            </div>
-          </div>
-        </p>
-      </section>
     </main>
     <aside class='sidebar'>
       
