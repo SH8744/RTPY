@@ -144,7 +144,7 @@ pre code{background:0 0;padding:0;color:inherit}
   position:sticky;top:0;z-index:80
 }
 .nav-inner{
-  align-items:center;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
+  align-items:center;display:flex;gap:10px 22px;justify-content:center;
   min-height:64px;padding-block:6px;position:relative
 }
 .nav-toggle-checkbox{display:none}
@@ -156,23 +156,33 @@ pre code{background:0 0;padding:0;color:inherit}
 }
 .site-nav li a:hover,.site-nav li.selected>a,.site-nav li a.current-item{color:#9c7c48;border-bottom-color:#9c7c48}
 .site-nav .widget-title{display:none}
+/* شريط البحث الممتد بعرض الصفحة */
+.site-search{
+  background:#ffffff;
+  border-bottom:1px solid #e8e1d5;
+  padding-block:14px
+}
 .nav-search{
   align-items:center;background:#f7f4ee;border:1px solid #e8e1d5;
-  border-radius:999px;display:flex;gap:2px;padding:4px;
+  border-radius:999px;display:flex;gap:4px;padding:5px;width:100%;
   transition:border-color .25s ease,box-shadow .25s ease
 }
 .nav-search:focus-within{border-color:#9c7c48;box-shadow:0 0 0 3px rgba(156,124,72,.13)}
 .nav-search button{
   align-items:center;background:#9c7c48;border:0;border-radius:50%;color:#fff;cursor:pointer;
-  display:flex;flex:0 0 34px;height:34px;justify-content:center;transition:background .2s ease;width:34px
+  display:flex;flex:0 0 38px;height:38px;justify-content:center;transition:background .2s ease;width:38px
 }
 .nav-search button:hover{background:#7d6135}
-.nav-search svg{height:15px;width:15px;stroke-width:2}
+.nav-search svg{height:16px;width:16px;stroke-width:2}
 .nav-search input{
-  background:0 0;border:0;color:#4a443c;font:inherit;font-size:14.5px;
-  min-width:0;outline:0;padding:6px 12px;width:210px
+  background:0 0;border:0;color:#4a443c;flex:1 1 auto;font:inherit;font-size:15px;
+  min-width:0;outline:0;padding:8px 16px;width:auto
 }
 .nav-search input::placeholder{color:#8c8578}
+.search-hint{
+  color:#8c8578;flex:0 0 auto;font-size:12.5px;letter-spacing:.02em;
+  opacity:.75;padding-inline-end:18px
+}
 
 /* ============================================================
    4) التخطيط العام
@@ -500,10 +510,8 @@ iframe.blogger-iframe-colorize{width:100%}
   .layout-grid{gap:36px;grid-template-columns:minmax(0,1fr)}
   .sidebar{margin-top:8px}
   .site-nav{position:relative}
-  .nav-inner{gap:8px;justify-content:space-between;min-height:56px;padding-inline:10px}
+  .nav-inner{justify-content:space-between;min-height:56px;padding-inline:10px}
   .nav-toggle{display:flex}
-  .nav-search{flex:1 1 auto;order:2}
-  .nav-search input{flex:1 1 auto;width:auto}
   .site-nav .widget,.site-nav .section{display:none}
   .nav-toggle-checkbox:checked~.section{display:block;flex:0 0 100%;order:3}
   .nav-toggle-checkbox:checked~.section ul{display:block;padding-block:8px 14px;width:100%}
@@ -524,9 +532,14 @@ iframe.blogger-iframe-colorize{width:100%}
   .author-box{flex-direction:column;text-align:center}
   .site-main{padding-block:30px 40px}
 }
+@media (max-width:760px){
+  .search-hint{display:none}
+  .nav-search button{flex:0 0 34px;height:34px;width:34px}
+  .nav-search input{font-size:14px;padding:7px 12px}
+}
 @media (max-width:420px){
-  .nav-search button{flex:0 0 30px;height:30px;width:30px}
-  .nav-search input{font-size:13.5px;padding:6px 8px}
+  .nav-search button{flex:0 0 32px;height:32px;width:32px}
+  .nav-search input{font-size:13.5px;padding:6px 10px}
   .blog-pager{flex-direction:column;align-items:stretch;text-align:center}
   .blog-pager a{display:block}
 }
@@ -577,14 +590,20 @@ iframe.blogger-iframe-colorize{width:100%}
           </ul>
         </div></div>
       </div>
-      <form class='nav-search' role='search' onsubmit='return false'>
-        <button aria-label='ابحث' type='submit'>
-          <svg height='16' viewBox='0 0 24 24' width='16'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
-        </button>
-        <input aria-label='ابحث' placeholder='ابحث في المدونة' type='search'/>
-      </form>
     </div>
   </nav>
+
+  <div class='site-search'>
+    <div class='container'>
+      <form class='nav-search' role='search' onsubmit='return false'>
+        <button aria-label='ابحث' type='submit'>
+          <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
+        </button>
+        <input aria-label='ابحث في هذه المدونة' autocomplete='off' placeholder='ابحث في المدونة...' type='search'/>
+        <span class='search-hint'>اضغط Enter للبحث</span>
+      </form>
+    </div>
+  </div>
 </header>
 
 <div class='site-main'>

@@ -115,14 +115,20 @@ HOME_BODY = """
           </ul>
         </div></div>
       </div>
-      <form class='nav-search' role='search' onsubmit='return false'>
-        <button aria-label='ابحث' type='submit'>
-          <svg height='16' viewBox='0 0 24 24' width='16'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
-        </button>
-        <input aria-label='ابحث' placeholder='ابحث في المدونة' type='search'/>
-      </form>
     </div>
   </nav>
+
+  <div class='site-search'>
+    <div class='container'>
+      <form class='nav-search' role='search' onsubmit='return false'>
+        <button aria-label='ابحث' type='submit'>
+          <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
+        </button>
+        <input aria-label='ابحث في هذه المدونة' autocomplete='off' placeholder='ابحث في المدونة...' type='search'/>
+        <span class='search-hint'>اضغط Enter للبحث</span>
+      </form>
+    </div>
+  </div>
 </header>
 
 <div class='site-main'>
@@ -329,6 +335,18 @@ POST_BODY = """
       </div>
     </div>
   </nav>
+
+  <div class='site-search'>
+    <div class='container'>
+      <form class='nav-search' role='search' onsubmit='return false'>
+        <button aria-label='ابحث' type='submit'>
+          <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
+        </button>
+        <input aria-label='ابحث في هذه المدونة' autocomplete='off' placeholder='ابحث في المدونة...' type='search'/>
+        <span class='search-hint'>اضغط Enter للبحث</span>
+      </form>
+    </div>
+  </div>
 </header>
 
 <div class='site-main'>
