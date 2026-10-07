@@ -115,11 +115,6 @@ HOME_BODY = """
           </ul>
         </div></div>
       </div>
-    </div>
-  </nav>
-
-  <div class='site-search'>
-    <div class='container'>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
@@ -128,7 +123,7 @@ HOME_BODY = """
         <span class='search-hint'>اضغط Enter للبحث</span>
       </form>
     </div>
-  </div>
+  </nav>
 </header>
 
 <div class='site-main'>
@@ -332,12 +327,6 @@ POST_BODY = """
             <li><a href='#'>عن المدونة</a></li>
           </ul>
         </div></div>
-      </div>
-    </div>
-  </nav>
-
-  <div class='site-search'>
-    <div class='container'>
       <form class='nav-search' role='search' onsubmit='return false'>
         <button aria-label='ابحث' type='submit'>
           <svg height='17' viewBox='0 0 24 24' width='17'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.6-3.6'/></svg>
@@ -346,7 +335,7 @@ POST_BODY = """
         <span class='search-hint'>اضغط Enter للبحث</span>
       </form>
     </div>
-  </div>
+  </nav>
 </header>
 
 <div class='site-main'>
