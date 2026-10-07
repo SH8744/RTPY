@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<meta content='1.3.4' name='dahsha-version'/>
+<meta content='1.3.5' name='dahsha-version'/>
 <title>دهشة موثّقة</title>
 <link href='https://fonts.googleapis.com' rel='preconnect'/>
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
@@ -18,7 +18,7 @@
 
 =========================================================
   قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.3.4
+  الإصدار 1.3.5
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -539,8 +539,8 @@ iframe.blogger-iframe-colorize{width:100%}
   .sidebar{margin-top:8px}
   .nav-inner{justify-content:space-between;min-height:56px;padding-inline:10px}
   .nav-toggle{display:flex}
-  /* البحث يبقى فوق الستارة والدُرج فيظلّ قابلًا للاستعمال والقائمة مفتوحة */
-  .nav-search{flex-basis:auto;flex-grow:1;position:relative;z-index:50}
+  /* البحث فوق الستارة فقط (41) — الدُرج (45) يغطّيه، ويُخفى كاملًا عند فتح الدُرج */
+  .nav-search{flex-basis:auto;flex-grow:1;position:relative;z-index:41}
   .nav-toggle-checkbox{
     clip-path:inset(50%);display:block;height:1px;opacity:0;overflow:hidden;position:absolute;width:1px
   }
@@ -577,8 +577,9 @@ iframe.blogger-iframe-colorize{width:100%}
     border-inline-start:0;border-top:1px solid #e8e1d5;
     margin-top:22px;padding-inline-start:0;padding-top:22px
   }
-  /* عند الفتح: زر ☰ في الشريط يفسح مكانه لزر ✕ داخل الدُرج */
-  .nav-toggle-checkbox:checked~.nav-toggle{visibility:hidden}
+  /* عند الفتح: يفسح الشريط كاملًا (☰ والبحث) مكانه للدُرج وزر ✕ داخله */
+  .nav-toggle-checkbox:checked~.nav-toggle,
+  .nav-toggle-checkbox:checked~.nav-search{visibility:hidden}
   .nav-drawer-close{
     align-items:center;background:#ffffff;border:1px solid #e8e1d5;
     border-radius:50%;color:#1f1c19;cursor:pointer;display:flex;height:38px;
@@ -599,7 +600,8 @@ iframe.blogger-iframe-colorize{width:100%}
   html[dir=rtl] body.nav-open .site-nav .section{
     transform:translateX(0);transition:transform .3s ease,visibility 0s 0s;visibility:visible
   }
-  body.nav-open .nav-toggle{visibility:hidden}
+  body.nav-open .nav-toggle,
+  body.nav-open .nav-search{visibility:hidden}
   body.nav-open .nav-drawer-close{
     opacity:1;transition:opacity .3s ease,visibility 0s 0s;visibility:visible
   }
