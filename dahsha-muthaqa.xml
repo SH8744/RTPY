@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- ============================================================
+     ✅ هذا هو ملف القالب الصحيح — الإصدار 1.3.4
+     ارفع هذا الملف إلى بلوجر:  المظهر ← ⋯ ← استعادة ← رفع
+     ⛔ لا ترفع أي ملف من مجلد archive/ (نسخ قديمة للرجوع فقط).
+     للتحقّق من النسخة المرفوعة: ابحث في مصدر صفحتك عن dahsha-version
+     ============================================================ -->
 <!DOCTYPE html>
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='dahsha-muthaqa.xml' b:templateVersion='1.3.4' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
