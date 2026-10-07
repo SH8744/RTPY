@@ -3,6 +3,7 @@
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
+<meta content='1.3.4' name='dahsha-version'/>
 <title>دهشة موثّقة</title>
 <link href='https://fonts.googleapis.com' rel='preconnect'/>
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
@@ -17,7 +18,7 @@
 
 =========================================================
   قالب «دهشة موثّقة» — قالب بلوجر كلاسيكي أنيق
-  الإصدار 1.3.3
+  الإصدار 1.3.4
   تصميم: تخطيط بسيط، ألوان كلاسيكية، خطوط نسخية (Serif)
   يعمل بخصائص CSS المنطقية لذلك يدعم العربية (RTL) والإنجليزية (LTR)
 =========================================================
@@ -587,6 +588,19 @@ iframe.blogger-iframe-colorize{width:100%}
   .nav-drawer-close svg{height:16px;width:16px;stroke-width:2}
   .nav-drawer-close:hover{background:#9c7c48;border-color:#9c7c48;color:#fff}
   .nav-toggle-checkbox:checked~.nav-drawer-close{
+    opacity:1;transition:opacity .3s ease,visibility 0s 0s;visibility:visible
+  }
+
+  /* ===== مسار احتياطي (تُضيفه أسطر الجافاسكربت في نهاية القالب) =====
+     يفتح الدُرج بالصنف body.nav-open، فيعمل حتى لو تعذّرت محددات ~ أو :checked */
+  body.nav-open{overflow:hidden}
+  body.nav-open .nav-backdrop{display:block}
+  body.nav-open .site-nav .section,
+  html[dir=rtl] body.nav-open .site-nav .section{
+    transform:translateX(0);transition:transform .3s ease,visibility 0s 0s;visibility:visible
+  }
+  body.nav-open .nav-toggle{visibility:hidden}
+  body.nav-open .nav-drawer-close{
     opacity:1;transition:opacity .3s ease,visibility 0s 0s;visibility:visible
   }
 }

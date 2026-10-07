@@ -543,12 +543,27 @@ note = { page: 214, voice: "whisper" }</code></pre>
 """
 
 
-def page(title, body_inner):
+VERSION = '0.0.0'
+
+BADGE_CSS = """
+/* شارة المعاينة (ليست جزءًا من القالب) */
+.preview-badge{background:rgba(31,28,25,.82);border-radius:8px 8px 0 0;bottom:0;color:#f2ede4;
+font:12px/1.6 Tahoma,Arial,sans-serif;inset-inline-start:14px;padding:5px 12px;pointer-events:none;
+position:fixed;z-index:99999}
+"""
+
+BADGE_HTML = """
+<div class='preview-badge'>معاينة ثابتة — إصدار القالب {v} · دُرج الجوال يظهر عند عرض أقل من 1000px</div>
+"""
+
+
+def _page_shell(title, body_inner):
     return """<!DOCTYPE html>
 <html dir='rtl' lang='ar'>
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
+<meta content='{version}' name='dahsha-version'/>
 <title>{title}</title>
 <link href='https://fonts.googleapis.com' rel='preconnect'/>
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
@@ -560,7 +575,16 @@ def page(title, body_inner):
 </head>
 <body>
 {body}
-""".format(title=title, CSS='__CSS__', body=body_inner)
+""".format(title=title, CSS='__CSS__', body=body_inner, version=VERSION)
+
+
+def page(title, body_inner, with_badge=True):
+    """صفحة معاينة كاملة؛ الشارة تُضاف قبل </body> وبعد اكتمال البناء."""
+    html = _page_shell(title, body_inner)
+    if with_badge:
+        html = html.replace('</style>', BADGE_CSS + '</style>', 1)
+        html = html.replace('</body>', BADGE_HTML.replace('{v}', VERSION) + '</body>', 1)
+    return html
 
 
 EMPTY_STATE = """
@@ -572,39 +596,49 @@ EMPTY_STATE = """
 """
 
 
-def mobile_showcase():
-    """لوحة تُظهر القائمة الجانبية في الجوال: إطار مغلق وإطار مفتوح."""
+def mobile_showcase(closed_html, open_html):
+    """لوحة معاينة الجوال: إطاران يعملان بلا أي ملف خارجي (srcdoc) حتى تُعرض في أي عارض."""
+    esc = (lambda s: s.replace('&', '&amp;').replace('"', '&quot;')
+                      .replace('<', '&lt;').replace('>', '&gt;'))
+    frames = ''.join(
+        "<figure><iframe height='780' title='{t}' width='390' srcdoc=\"{doc}\"></iframe>"
+        "<figcaption>{c}</figcaption></figure>".format(t=t, c=c, doc=esc(doc))
+        for t, c, doc in [
+            ('القائمة مغلقة', 'القائمة مغلقة (شريط + بحث)', closed_html),
+            ('دُرج القائمة مفتوح', 'الدُرج الجانبي مفتوح + الستارة + زر ✕', open_html),
+        ])
     return """<!DOCTYPE html>
 <html dir='rtl' lang='ar'>
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
+<meta content='{v}' name='dahsha-version'/>
 <title>معاينة الجوال — دهشة موثّقة</title>
 <style>
-  body{background:#f2efe8;color:#1f1c19;font:16px/1.8 Tahoma,Arial,sans-serif;margin:0;padding:28px 18px 60px;text-align:center}
-  h1{font-size:22px;margin:0 0 8px}
-  p{color:#6f695e;margin:0 auto 26px;max-width:720px}
-  .frames{display:flex;flex-wrap:wrap;gap:28px;justify-content:center}
-  figure{margin:0}
-  figcaption{color:#6f695e;font-size:14px;margin-top:10px}
-  iframe{background:#fff;border:1px solid #e8e1d5;border-radius:14px;box-shadow:0 18px 40px -30px rgba(0,0,0,.5);display:block}
+  body{{background:#f2efe8;color:#1f1c19;font:16px/1.8 Tahoma,Arial,sans-serif;margin:0;padding:28px 18px 60px;text-align:center}}
+  h1{{font-size:22px;margin:0 0 8px}}
+  p{{color:#6f695e;margin:0 auto 26px;max-width:760px}}
+  .frames{{display:flex;flex-wrap:wrap;gap:28px;justify-content:center}}
+  figure{{margin:0;max-width:100%}}
+  figcaption{{color:#6f695e;font-size:14px;margin-top:10px}}
+  iframe{{background:#fff;border:1px solid #e8e1d5;border-radius:14px;box-shadow:0 18px 40px -30px rgba(0,0,0,.5);display:block;max-width:100%}}
 </style>
 </head>
 <body>
-  <h1>معاينة الجوال</h1>
-  <p>إطاران بعرض هاتف حقيقي (390px) — القاعدة <code>@media (max-width:1000px)</code> فعّالة داخل الإطارين.
-     يمينًا: القائمة مغلقة، ويسارًا: الدُرج الجانبي مفتوح مع الستارة وزر الإغلاق.</p>
-  <div class='frames'>
-    <figure><iframe height='760' src='phone-closed.html' title='القائمة مغلقة' width='390'></iframe><figcaption>القائمة مغلقة (شريط + بحث)</figcaption></figure>
-    <figure><iframe height='760' src='phone-open.html' title='دُرج القائمة مفتوح' width='390'></iframe><figcaption>الدُرج الجانبي مفتوح + ستارة</figcaption></figure>
-  </div>
+  <h1>معاينة الجوال — إصدار القالب {v}</h1>
+  <p>إطاران بعرض هاتف (390px) ومحتواهما مضمَّن داخل الملف نفسه (srcdoc) فلا يحتاجان أي ملف خارجي.
+     اليمين: القائمة مغلقة، واليسار: الدُرج الجانبي مفتوح مع الستارة وزر الإغلاق.</p>
+  <div class='frames'>{frames}</div>
 </body>
 </html>
-"""
+""".format(v=VERSION, frames=frames)
 
 
 def main():
+    global VERSION
     xml = read(XML)
+    found = re.search(r"content='([\d.]+)'\s+name='dahsha-version'", xml)
+    VERSION = found.group(1) if found else '0.0.0'
     css = build_css(xml)
     os.makedirs(OUT, exist_ok=True)
 
@@ -631,15 +665,17 @@ def main():
     empty_body = HOME_BODY.replace('{CARDS}', EMPTY_STATE).replace('{SIDEBAR}', SIDEBAR)
     empty = page('لا توجد مشاركات — دهشة موثّقة', empty_body + FOOTER).replace('__CSS__', css)
 
-    # لوحة معاينة الجوال: نفس الصفحة داخل إطارين بعرض هاتف، أحدهما بدُرج مفتوح
-    opened = home.replace(
+    # إطارا الجوال: نسخة من الرئيسية بلا شارة، وإحداهما بدُرج مفتوح
+    phone_closed = page('دهشة موثّقة', home_body + FOOTER, with_badge=False).replace('__CSS__', css)
+    opened = phone_closed.replace(
         "class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'",
         "checked='checked' class='nav-toggle-checkbox' id='nav-toggle' type='checkbox'")
-    assert opened != home, 'تعذّر ضبط مفتاح القائمة مفتوحًا — تحقّق من ماركب المعاينة'
+    assert opened != phone_closed, 'تعذّر ضبط مفتاح القائمة مفتوحًا — تحقّق من ماركب المعاينة'
 
     pages = [
         ('index.html', home), ('post.html', post), ('empty.html', empty),
-        ('phone-closed.html', home), ('phone-open.html', opened), ('mobile.html', mobile_showcase()),
+        ('phone-closed.html', phone_closed), ('phone-open.html', opened),
+        ('mobile.html', mobile_showcase(phone_closed, opened)),
     ]
     for name, html in pages:
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
